@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+ <title> Introduction to JS </title>
+</head>
+ 
+<body>
+ <h3 id="myHeading">Welcome to Html</h3>
+ <p id="myPara">This is a paragraph</p>
+ <button onclick="parentFunction()">Start JavaScript</button>
+ <input type="number" min="1" max="3" id="myStatus" />
+ <button onclick="changeParaColor()">Change Status</button>
+
+ <script>
+    console.log("Welcome to JS");
+   let heading = document.getElementById("myHeading")
+   let para = document.getElementById("myPara")
+   console.log(heading.innerHTML);
+    
+    function parentFunction() {
+    changeHeading();
+    changeParagraph();
+    changeStatus(3)
+    }
+    
+    function changeHeading() {
+    heading.innerHTML = "Welcome to JS".toUpperCase();
+    }
+    
+    function changeParagraph() {
+    
+    para.innerHTML = "This is a paragraph from js".toLowerCase();
+    }
+    
+    function changeStatus(status) {
+    if (status == 1) {
+    para.style.color = "red";
+    }
+    else if (status == 2) {
+    para.style.color = "green";
+    }
+    else if (status == 3) {
+    para.style.color = "blue";
+    }
+    }
+    
+    function changeParaColor() {
+    let status = document.getElementById("myStatus").value;
+    changeStatus(status);
+    }
+    
+   </script>
+</body>
+ 
+</html>
+ 
