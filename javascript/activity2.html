@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>String Operations Example</title>
+</head>
+
+<body>
+    <input type="text" id="myInput"/>
+    <button onclick="showResults()">Show Results</button>
+
+            <p>----------------------------------------</p>
+            <P>No. of Words:<span id="words">100</span></P>
+            <P>No. of Space:<span id="space">100</span></P>
+            <P>No. of Characters:<span id="characters">100</span></P>
+            <p>----------------------------------------</p>
+
+
+    <script>
+            let sentenceInput     = document.getElementById("myInput");
+            let wordsCount        = document.getElementById("words");
+            let spaceCount        = document.getElementById("space");
+            let charactersCount   = document.getElementById("characters");
+
+            function showResults(){
+            let sentence   = sentenceInput.value;
+            let words      = sentence.split(" ").length;
+            let space      = countSpaces(sentence);
+            let characters = sentence.length;
+
+            wordsCount.innerHTML      = words;
+            spaceCount.innerHTML      = space;
+            charactersCount.innerHTML = characters;
+            }
+
+            function countSpaces(sentence){
+            let sentenceArray = sentence.split("");
+            let count = 0;
+            for(let i =0; i < sentenceArray.length; i++){
+                if(sentenceArray[i] == " "){
+                    count++;
+                }
+            }
+            return count;
+            }
+
+    </script>
+    
+</body>
+</html>
