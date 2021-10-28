@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>First assignment</title>
+    </head>
+    <body>
+        <heading>Javascript Practice</heading>
+        <br>
+        <p id="newtxt" style="font-size: 30px;"></p>
+        <textarea id="paragraph"></textarea><br>
+        <button type="button" onclick="mytext()">click Me</button><br>
+        <button onclick="red()" value="red">Red</button><button onclick="green()" value="green">Green</button><button onclick="blue()" value="blue">Blue</button>
+        
+        
+
+
+    <script>
+        
+
+        function mytext(){
+        let text = document.getElementById("paragraph").value;    
+        document.getElementById("newtxt").innerHTML = text;
+        console.log(text);
+        
+        };
+        
+        function red(){
+            document.getElementById("newtxt").style.color = "red";
+        };
+
+        function green(){
+            document.getElementById("newtxt").style.color = "green";
+        };
+
+        function blue(){
+            document.getElementById("newtxt").style.color = "blue";
+        };
+        
+        
+    </script>
+
+    </body>
+
+
+</html>
