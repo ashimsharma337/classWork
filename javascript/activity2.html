@@ -13,25 +13,36 @@
             <P>No. of Words:<span id="words">100</span></P>
             <P>No. of Space:<span id="space">100</span></P>
             <P>No. of Characters:<span id="characters">100</span></P>
+            <p>No. of Vowels:<span id = "vowels">100</span></p>
+            <p>No. of Consonant:<span id = "consonant">100</span></p>
             <p>----------------------------------------</p>
 
 
     <script>
+            let vowelsArr = ['a', 'e', 'i', 'o', 'u','A','E','I','O','U'];
+            let consonantArr = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z',
+                                'B','C','D','F','G','H','J','K','L','M','N','P','Q','R','S','T','V','W','X','Y','Z'];
             let sentenceInput     = document.getElementById("myInput");
             let wordsCount        = document.getElementById("words");
             let spaceCount        = document.getElementById("space");
             let charactersCount   = document.getElementById("characters");
+            let vowelsCount       = document.getElementById("vowels");
+            let consonantCount    = document.getElementById("consonant");
 
             function showResults(){
             let sentence   = sentenceInput.value;
             let words      = sentence.split(" ").length;
             let space      = countSpaces(sentence);
+            let vowels     = countVowels(sentence);
+            let consonant  = countConsonant(sentence);
             let characters = sentence.length;
 
             wordsCount.innerHTML      = words;
             spaceCount.innerHTML      = space;
             charactersCount.innerHTML = characters;
-            }
+            vowelsCount.innerHTML     = vowels;
+            consonantCount.innerHTML  = consonant;
+            } 
 
             function countSpaces(sentence){
             let sentenceArray = sentence.split("");
@@ -44,6 +55,34 @@
             return count;
             }
 
+            function countVowels(sentence){
+            let sentenceArray = sentence.split("");
+            let count = 0;
+            for(let i = 0; i < sentenceArray.length; i++){
+              for(let j = 0; j < vowelsArr.length; j++){
+                  if(sentenceArray[i] == vowelsArr[j]){
+                      count++;
+                  }
+              }
+            }
+            return count;
+            }
+
+            function countConsonant(sentence){
+            let sentenceArray = sentence.split("");
+            let count = 0;
+            for(let i = 0; i < sentenceArray.length; i++){
+              for(let j = 0; j < consonantArr.length; j++){
+                  if(sentenceArray[i] == consonantArr[j]){
+                      count++;
+                  }
+              }
+            }
+            return count;
+            }
+            
+            
+    
     </script>
     
 </body>
