@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Simple Calculator </title>
+    <style>
+        .container{
+            max-width: 180px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: silver;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: solid red 4px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+
+        }
+        
+        #display {
+            width: 160px;
+            height: 25px;
+            text-align: right;
+            font-weight: 600;
+            color: white;
+            background-color: black;
+
+        }
+        button{
+            font-size: 20px;
+            margin-top: 5px ;
+            width: 39px;
+            height: 40px;
+            border-radius: 8px;
+            color: white;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input id="display" type="text"/>
+      <div class="wrapper">
+       <div class="row">
+        <button onclick="myBtnVal('1')">1</button>
+        <button onclick="myBtnVal('2')">2</button>
+        <button onclick="myBtnVal('3')">3</button>
+        <button onclick="myBtnVal('+')">+</button>
+       </div>
+       <div class="row">
+        <button onclick="myBtnVal('4')">4</button>
+        <button onclick="myBtnVal('5')">5</button>
+        <button onclick="myBtnVal('6')">6</button>
+        <button onclick="myBtnVal('*')">x</button>
+       </div>
+       <div class="row">
+        <button onclick="myBtnVal('7')">7</button>
+        <button onclick="myBtnVal('8')">8</button>
+        <button onclick="myBtnVal('9')">9</button>
+        <button onclick="myBtnVal('/')">/</button>
+       </div>
+       <div class="row">
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="myBtnVal('0')">0</button>
+        <button onclick="myBtnVal('-')">-</button>
+        <button onclick="calculateEqual()">=</button>
+       </div>
+      </div>
+
+
+
+    </div>
+    <script>
+        let display = document.getElementById("display");
+        function myBtnVal(x) {
+        display.value = display.value+x;
+        }
+        function calculateEqual() {
+            display.value = eval(display.value);
+        }
+        function clearDisplay() {
+            
+            display.value = '';
+        }
+    </script>
+</body>
+</html>
