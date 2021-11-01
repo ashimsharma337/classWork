@@ -41,6 +41,14 @@
             color: white;
             background-color: black;
         }
+        #backspace {
+            background-color: black;
+            color: white;
+            height: 25px;
+            font-size: 20px;
+        
+        }
+       
     </style>
 </head>
 <body>
@@ -70,6 +78,9 @@
         <button onclick="myBtnVal('0')">0</button>
         <button onclick="myBtnVal('-')">-</button>
         <button onclick="calculateEqual()">=</button>
+       </div>
+       <div id="backspace">
+        <p onclick="backSpace()">Back space</p>
        </div>
       </div>
 
@@ -130,6 +141,16 @@
         function clearDisplay() {
             
             display.value = '';
+        }
+
+        function backSpace() {
+            let newValue = display.value;
+            myString = newValue.toString();
+            let numArr = myString.split("");
+            newArr = numArr.pop();
+            newDisplay = numArr.join("");
+            display.value = newDisplay;
+            
         }
         
      
