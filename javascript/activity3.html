@@ -21,7 +21,7 @@
 
         }
         
-        #display {
+        #display, ::placeholder {
             width: 160px;
             height: 25px;
             text-align: right;
@@ -30,6 +30,8 @@
             background-color: black;
 
         }
+
+          
         button{
             font-size: 20px;
             margin-top: 5px ;
@@ -43,7 +45,7 @@
 </head>
 <body>
     <div class="container">
-        <input id="display" type="text"/>
+        <input id="display" type="text" placeholder="0"/>
       <div class="wrapper">
        <div class="row">
         <button onclick="myBtnVal('1')">1</button>
@@ -55,7 +57,7 @@
         <button onclick="myBtnVal('4')">4</button>
         <button onclick="myBtnVal('5')">5</button>
         <button onclick="myBtnVal('6')">6</button>
-        <button onclick="myBtnVal('*')">x</button>
+        <button onclick="myBtnVal('*')">X</button>
        </div>
        <div class="row">
         <button onclick="myBtnVal('7')">7</button>
@@ -75,17 +77,62 @@
 
     </div>
     <script>
+        
+        
+        
         let display = document.getElementById("display");
-        function myBtnVal(x) {
-        display.value = display.value+x;
+        let operatorCount = 0;
+        let equalPressed = false;
+        
+        
+        function myBtnVal(clkBtn) {
+
+           if (equalPressed == false) {
+
+                if (clkBtn == "+" || clkBtn == "-" || clkBtn == "/" || clkBtn == "*") {
+                    operatorCount++;
+                    if (operatorCount > 1) {
+                        let newValue = eval(display.value) + clkBtn;
+                        display.value = newValue;
+                    
+                    } else {
+                        let newValue = display.value + clkBtn;
+                        display.value = newValue;
+                    }
+                        
+                } else {
+                            let newValue = display.value + clkBtn;
+                            display.value = newValue;
+                }
+
+           } 
+              else {
+                clearDisplay();
+                display.value = clkBtn;
+                equalPressed = false;
+              }
+        
         }
+        
+        
         function calculateEqual() {
-            display.value = eval(display.value);
+            equalPressed = true;
+            try {display.value = eval(display.value);
+
+            } 
+            catch {
+                display.value = 'Error!';
+            }
+            
         }
+        
+        
         function clearDisplay() {
             
             display.value = '';
         }
+        
+     
     </script>
 </body>
 </html>
