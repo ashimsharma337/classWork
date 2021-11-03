@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Functions, Objects, and Array </title>
+</head>
+
+<body>
+<h3 id="classInfo"></h3>
+<ul id="studentsList"></ul>
+
+<p>------------------------------------------------------------------------------------------</p>
+<ul id="myList"></ul>
+<input type = "text" id="wordEnter"><br>
+<button id  = "addAtStart" onClick   = "addAtStart()">Add at Start.</button>
+<button id  = "addAtEnd" onclick     = "addAtEnd()">Add at End.</button>
+<button id  = "removeFirst" onclick  = "removeFirst()">Remove First Element.</button>
+<button id  = "removeLast" onclick   = "removeLast()">Remove Last Element.</button>
+
+<script>
+    let studentsList   = document.getElementById("studentsList");
+    let studentName    = document.getElementById("studentName");
+    let studentAge     = document.getElementById("studentAge");
+    let classInfo      = document.getElementById("classInfo");
+    let myList         = document.getElementById("myList");
+
+    let student = {
+        name: "John",
+        age: "20"
+    };
+
+    let details = {
+    name: "Grade 4",
+    studentsCount: 8,
+    students: ["A", "B", "C", "D", "E", "F", "G", "H"]
+    };
+
+    //let students = ["John", "Martha", "Patric"];
+
+    let fruits = ["banana", "apple", "peach"];
+
+    classInfo.innerHTML = details.name + " " +"has" + " " +  details.studentsCount + " " + "students.";
+    for (let i = 0; i < details.students.length; i++) {
+    studentsList.innerHTML = studentsList.innerHTML + `<li>${details.students[i]}</li>`;
+    }
+    
+    displayFruits();
+    function displayFruits() {
+    myList.innerHTML = "";
+    for (let i = 0; i < fruits.length; i++) {
+    myList.innerHTML += `<li>${fruits[i]}</li>`;
+    }
+    }
+    
+    function addAtStart() {
+    let newFruit = document.getElementById("wordEnter").value
+    fruits.unshift(newFruit);
+    //myList.innerHTML = "";
+    displayFruits();
+    
+    } 
+
+    function addAtEnd() {
+    let newFruit = document.getElementById("wordEnter").value;
+    fruits.push(newFruit);
+    //myList.innerHTML = "";
+    displayFruits();
+    }
+
+    function removeFirst() {
+    fruits.shift();
+    displayFruits();
+    }
+
+    function removeLast() {
+    fruits.pop();
+    displayFruits();
+    }
+    
+    
+  
+
+
+</script>   
+</body>
+</html>
