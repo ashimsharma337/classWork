@@ -142,6 +142,17 @@ const person1 = {
 //     setTimeout(function(){addNumber(2, 3)}, 2000);//To put parameter in callbacks we used anonymous function
 
 
+// function addUser() {
+    
 
+//     *If parseInt is not used userInput will be treated as a string.
+//     const a = parseInt(prompt("Plz enter your first number."));
+//     const b = parseInt(prompt("plz enter your second number."));
+//     b.parseInt;
+//     c =  a + b;
+//     document.write("Your total is " + c);
+// }
+
+// addUser();
 
 
