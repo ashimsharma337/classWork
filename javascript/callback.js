@@ -1,6 +1,7 @@
 
 
-// A callback is a function passed as an argument to another function
+// A callback function is a function passed to another function as an argument.
+// The callback function can then be invoked inside the called function to do some action.
 
 // function displayResults(value) {
 //     console.log(value);
@@ -46,4 +47,13 @@ callback(total);
 }
 
 inputCalculation(displayResults);
+// A callback function is a function passed into another function as an argument, 
+// which is then invoked inside the outer function to complete some kind of routine or action.
+// The above example is a synchronous callback, as it is executed immediately.
+// * Note, however, that callbacks are often used to 
+// continue code execution after an asynchronous operation has completed
+//  — these are called asynchronous callbacks. 
+//  A good example is the callback functions executed inside a .then() 
+//  block chained onto the end of a promise after that promise fulfills or rejects. 
+//  This structure is used in many modern web APIs, such as fetch()
 
