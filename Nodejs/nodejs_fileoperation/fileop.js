@@ -3,5 +3,5 @@
 const fileOp = require("./file.js");
 console.log(fileOp);
 
-fileOp.a()
+fileOp.a("def.txt", "string to write")
 .then((succ) => console.log(succ));
