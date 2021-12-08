@@ -2,9 +2,9 @@
 const fileOp = require("fs");
 
 
-function writeInfile() {
+function writeInfile(file_name, data) {
     return new Promise((resolve, reject) => {
-        fileOp.writeFile("files/xyz.txt", "Test string", function(err) {
+        fileOp.writeFile("files/"+file_name, data, function(err) {
             if(err) {
                 reject(err);
             } else {
@@ -16,9 +16,9 @@ function writeInfile() {
 
 
 
-function readFromfile() {
+function readFromfile(file_name) {
     return Promise((resolve, reject) => {
-        fileOp.readFile("files/xyz.txt", {encoding:'utf8'}, function(err, done) {
+        fileOp.readFile("files/"+file_name, {encoding:'utf8'}, function(err, done) {
             if(done) {
                 resolve("Done: ", done);
             } else {
