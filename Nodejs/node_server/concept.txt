@@ -1,0 +1,68 @@
+Client-Server architecture 
+
+User(agent)-->Client(Web Browser)
+           -->URL(End Point)
+                     --->Protocol
+                         Path(domain, param, query)
+            eg. protocol://domain/path/?key=value&key_1=value
+
+Server(responder)
+   --->response on the basis of request of Client
+   first thing that server looks is protocol
+   if, https:sends html to browser,FTP sends file download to browser, smtp: mail, tailnet:remote connection
+
+all protocol are assigned specific number in server known as port number
+port number are 1-2^16-1
+some server has default port number as below
+http--80
+https--443
+
+client    server      |request response cycle should be completed if not
+req ===== res         |server gives status code
+
+status code
+100 range => Information range
+200 range => Response success/ok
+300       => Redirect 
+400       => Error / resource 
+500       => Server / Error e.g gives badgateway due to insufficient bandwidth 
+
+Web architecture 
+MVC (3 tier architecture) (we also have 2 tier only model and view)
+Model ----Data base design                              |view calls controller
+View  ------output representation                       |controller talks to model
+controller---connects view and model(brain of software) 
+
+Method of communication between client and server
+RESTful services  || it is stateless service
+GET, POST, PUT, PATCH, DELETE (also known as http verbs, restful service method, client-service method)
+// Javascript has all 5 but someother language has only GET and POST
+
+
+
+API -- Application Programming Interface
+Suppose we have mobile app, same app has desktop app, mobile app, desktop app
+
+Mobile 
+
+
+Web app                    Api(communicator)                                          Server =============== Database
+eg(Ecommerce)                 key/endpoint(Url)
+                          we send data to enpoint
+Desktop                           of esewa
+                          they send back json data
+                     to browers(json is universal data format can be read by all programming language)
+
+
+
+
+
+
+
+
+
+
+
+http and https
+https has a security layer remember meat shop gives two polythene bag, during hosting we have o buy ssl certificate 
+
