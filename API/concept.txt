@@ -1,0 +1,7 @@
+Process of Authorization                    | First we get data from user from client(form)
+              -Resgistration                | then we receive that data in API then put in database
+              -Login                        | making url taking data and post it to database
+              -Log out                      | server recieves data in the form of json(e.g req.param)
+              -Forget password              |
+              -Activation                   |             
+                                
