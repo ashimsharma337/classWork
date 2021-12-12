@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
     // console.log(process);                        // and control over, the current Node.js process. 
     // console.log(process.argv);                   // As a global, it is always available to Node.js applications without using require().
     res.sendFile(process.cwd()+"/View/about.html");  // The process.env property returns an object containing the user environment.
-                               
+    //using es5(res.sendFile(__dirname, View, about.html))                           
 });
 
 // Example of major res function
