@@ -37,6 +37,10 @@ app.get("/about", (req, res) => {
 //     });
 // });
 
+// app.get("/", (req, res) => {
+//     res.redirect("/about");
+// }),
+
 // POST request is used to fetch user data for login registration/ 
 // we can not make post request in browser without form so we use postman
 
