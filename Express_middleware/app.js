@@ -19,7 +19,7 @@ const router = express.Router();
 *                             they are bound to an instance of express.Router ()
 * c. Error handleing middleware -Define error-handling middleware functions in the same way as 
 *                                other middleware functions, except with four arguments instead 
-*                                of three, specifically with the signature (err, req, res, next)):
+*                                of three, specifically with the signature (err, req, res, next)): 404 error cant be handle
 * d. Built in middleware -express.static serves static assets such as HTML files, images, and so on.
 *                         express.json parses incoming requests with JSON payloads. NOTE: Available with Express 4.16.0+
 *                         express.urlencoded parses incoming requests with URL-encoded payloads. NOTE: Available with Express 4.16.0+
