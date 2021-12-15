@@ -15,7 +15,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-    res.send("This is login page");
+    res.render("login.pug", {
+        title: "Login Page",
+        msg: "This is login page."
+    });
 });
 
 router.get("/users", (req, res) => {
@@ -25,5 +28,18 @@ router.get("/users", (req, res) => {
 router.get("/profile", (req, res) => {
     res.send("This is profile page");
 });
+
+router.get("/admin", (req, res, next) => {
+    let admin = true;
+    if(admin) {
+        next();
+    } else {
+        res.send("No access.")
+    }
+}, function(req, res, next) {
+    res.end("Welcome back.");
+});
+
+
 
 export { router as authrouter};

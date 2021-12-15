@@ -17,6 +17,7 @@ router.get("/", (req, res) => {
     res.send("This is home page");
 });
 
+// There are two types of view static and dynamic (we use templating engine for dynamic view)
 // built in middleware express express.static()(used to upload static file) and express.urlencoded()(use for data parsing)
 // app.use("/uploads", express.static("uploads"));
 // app.use("/assets", express.static("uploads")); same as above but /assets in url instead of uploads
