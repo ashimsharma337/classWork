@@ -1,6 +1,8 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from 'url';
+import { authrouter } from "./auth.controller.js";
+import  bodyParser  from "body-parser";
 //we need to change up how __dirname is used for ES6 purposes using process.cwd() is not recommended
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -15,7 +17,7 @@ router.get("/", (req, res) => {
     res.send("This is home page");
 });
 
-// built in middleware express
+// built in middleware express express.static()(used to upload static file) and express.urlencoded()(use for data parsing)
 // app.use("/uploads", express.static("uploads"));
 // app.use("/assets", express.static("uploads")); same as above but /assets in url instead of uploads
 
@@ -26,7 +28,22 @@ router.get("/", (req, res) => {
 // now  load  static html and css files for  express app,  from  /uploads directory
 // app.use("/uploads", express.static(path.join(__dirname ,'uploads')));
 
-app.use(router);
+// for form data we need to parse (e.g urlencoded parsing and json dara parsing) depends on type of data receive
+
+// url encoded parsing
+app.use(express.urlencoded({
+    extended: true
+}));
+
+// Using body parser
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// })); //but it is third party middleware we have to install, express has builtin middleware so we use express.urlencoded()
+
+// parsing json data
+app.use(express.json());
+
+app.use(authrouter);
 
 app.listen(app.get("PORT"), (req, res) => {
     console.log("Server is listening at port 9000");
