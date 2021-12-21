@@ -1,0 +1,173 @@
+what is database ?
+        => Collection of data
+        => Data Storage unit 
+        => User input Storage
+        => Warehouse
+        => Raw / Process
+
+Data-Mining: Data is store in database after data processing it has information which is known as data mining(extraction of information from data).
+eg. const gravity = db.get(); // 9.8
+
+Two Types of database  Note: While choosing database we must know if we have extension to connect to that database server.(connectivity driver for connection).
+
+          a. Relational database 
+                    - Mysql, 
+                    - Oracle
+                    - Ms Sql
+                    - Postgres
+                    - sqlite
+                    - Mariadb
+
+          b. Distributed database(Non-Relational)
+                    - NO Sql 
+                    - Document 
+                    - Mongo 
+                    - Casandra 
+                    - Redis 
+                    - CouchDb
+                    - Non-Relational DB 
+
+Database can be represented with various diagram (database defining) Mainly
+       ER diagram
+       This diagram gives information of relation of database in depth.
+
+       Schema diagram
+       This diagramg gives information surfacely
+       e.g crowfoot diagram
+
+While making project or application major thing is to define database which we do by making database Modelling
+--Database Modelling: (very important which define what kind of data is stored, what is the relation e.t.c)
+     --ORM(object relational mapping) -ODM (object document mapping)
+
+while working with the data base server we must know the port at which they work
+for mongodb it work on port no.
+        Mongo PORT: 27017
+
+To connect Mongo server and our application
+       Application may be nodebase, api, or mobile, mongoose for online database e.t.c(client)
+     To connect server and client client make request through url
+           e.g protocol://path
+           mongodb://localhost
+
+In mongodb there will be unique id for each document _id: ObjectId() // hexadecimal
+
+CRUD
+Performing crud  operation in mongodb
+using mongoshell run mongo command to initialize mongo in terminal 
+run show dbs to see existing databases
+
+Create - we don't have any creat command to create database. We use use command(use databasename)
+         e.g use mern-2 // db command shows the databae we are working 
+         To make a collections   db.collectionname.insert({ })
+         db.users.insert({ "name": "Ashim Sharma", "email": "ashim@email.com", "password": "admin123", "role": "admin"});
+         To insert many data we use db.collectionname.insertMany([ ]) we add it in the form of array with objects 
+
+                         [
+                            {
+                                "name": "User One", 
+                                "email": "userone@email.com", 
+                                "password": "userone123", 
+                                "role": "user",
+                                "status": "active"
+                            },
+                            {
+                                "name": "User Two", 
+                                "email": "usertwo@email.com", 
+                                "password": "usertwo123", 
+                                "role": "user",
+                                "organization": "Broadway Infosys",
+                                "address": {
+                                        "perm": "kathmandu",
+                                        "temp": "udayapur"
+                                }
+                             },
+                             {
+                                "name": "User Three", 
+                                "email": "userthree@email.com", 
+                                "password": "userthree123", 
+                                "role": "user",
+                                "status": "active",
+                                "age": "16"
+                            },
+                            {
+                                "name": "User four", 
+                                "email": "userfour@email.com", 
+                                "password": "userfour123", 
+                                "role": "user",
+                                "status": "active",
+                                "age": "20"
+                            }
+                          ]
+
+
+               Note: unique _id key is always inserted by mongodb in document(Hexadecimal value). It's an instance of ObjectId
+
+Read - Data fetch 
+       db.collectionname.find().pretty()   --this will find the all data and pretty makes json pretty
+       db.collectionname.findOne()         --we can not use pretty on this, it will return first data of collectionname
+
+       db.collectionname.find({1}, {2}, {3}) function has three parameter(object) first two are major, lastone is optional
+       
+       1. first object  is use for filter
+             e.g db.users.find({"email": "usertwo@email.com"}); // we can add pretty()
+             for filter
+                 {key: value, key: value}
+
+                 we can use operator to filter as well
+                 {key: {operator: value}}
+
+                 e.g{key: {$gte}}                 // gte stands for greater than equal to, we can use on date as well. query operator(gte, lt, lte, e.t.c)
+                 db.users.find({age: {$gte: "16"}}).pretty();
+
+       2. second object is use for condition(projection)
+             e.g db.users.find({"email": "usertwo@email.com"}, {_id: 1}).pretty(); // if we put 1 it will only give id/ if 0 it will exclude
+                 db.users.find({"email": "usertwo@email.com"}, {_id: 1, name: 0}).pretty();
+                 db.users.find({"email": "usertwo@email.com"}, {_id: 0, name: 1}).pretty();
+
+
+Update -  
+      Update function also receives three parameter which are three objects
+                 db.collectionname.update({1}, {2}, {3});
+                 1. filter 
+                 2. Data to update. We have to send as a set 
+                     {
+                             $set: { 
+                                 update    
+                             }
+                     }
+                 3. Options (insert or update/ find and update)
+                    if no parameter then only update if it find
+
+                    {
+                            upsert: true,    // if found update if not insert
+                            collation: false // if true case sensitive if not it is not case sensitive
+                            multi: true      // to update multiple user
+                    }
+                    e.g db.users.update({email:"ashim@email.com"}, {$set: {name: "Sharma Ashim"}});
+                        db.users.update({age: {$gte: "16"}}, {$set: {name: "Above 16"}}, {multi: true});
+Delete - 
+       db.collectionname.deleteOne();
+       db.collectionname.deletemany();
+       e.g db.users.deleteOne({email: "userone@email.com"});
+
+Relation between tables(relation example: one to one, many to one, one to many)
+User 
+    - Admin 
+
+
+
+User
+id      name        role        entered_by
+-------------------------------------------
+1       Ram         1           null
+-------------------------------------------
+2       Shyam       3           1
+-------------------------------------------
+
+roles 
+---------------
+id      title 
+----------------
+1       Admin 
+----------------
+2       User
