@@ -150,6 +150,7 @@ Delete -
        db.collectionname.deletemany();
        e.g db.users.deleteOne({email: "userone@email.com"});
 
+
 Relation between tables(relation example: one to one, many to one, one to many)
 User 
     - Admin 
@@ -171,3 +172,14 @@ id      title
 1       Admin 
 ----------------
 2       User
+
+While connecting to the databases we need a database driver
+Database Driver- A database driver is a software that allows you to talk to your database from your application.
+                 There are language specific drivers such as JDBC, ODBC, OLE DB where the driver interface is implemented 
+                 according to the language specifications so your application could interact with the database according to predefined specs.
+
+The most basic difference between JDBC and ODBC is that 
+JDBC is language and platform dependent. On the other hand, 
+the ODBC is language and platform independent. 
+Java Database Connectivity is an acronym for JDBC, 
+and on the other hand, Open Database Connectivity is an acronym for ODBC.
