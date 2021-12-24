@@ -141,3 +141,6 @@ router.route("/:id")
 
 
 module.exports = router;
+
+// In this concept we are connecting database whenever we needed but we dont do that instead we use mongoose
+// Mongoose(client) connect to a database when application start
