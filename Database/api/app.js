@@ -7,6 +7,8 @@ var path = require('path');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authrouter  = require("./routes/auth");
+var productRouter = require("./routes/product");
+//var minirouter  = require("./configs/minify.core");
 
 var app = express();
 
@@ -27,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/", authrouter);
+app.use("/products", productRouter);
+//app.use("/products/mini", minirouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,7 +47,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   // res.render('error');
   res.json({
-    error: err.status
+    error: err
   });
 });
 
