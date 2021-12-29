@@ -18,6 +18,10 @@ getAllproducts(req, res, next) {
 
 addProduct(req, res, next) {
     const product = new ProductModel(req.body);
+
+    // object mapping(body mapping)
+    // product.title = req.body.name
+
     product.save(function(err, success) {
         if(err) {
             next(err);
