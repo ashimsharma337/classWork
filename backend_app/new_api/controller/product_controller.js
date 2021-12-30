@@ -22,6 +22,7 @@ addProduct(req, res, next) {
     if(req.file) {
         req.body.image = req.file.filename;
     }
+    // if multiple image then.....req.files.map(object => object.filename)
     // console.log(req.body.image);
     const product = new ProductModel(req.body);
     

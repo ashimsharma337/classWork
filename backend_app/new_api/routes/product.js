@@ -1,7 +1,6 @@
 const express = require("express");
 
 const router = express.Router();
-const ProductModel = require("../model/product_model");
 const ProductController = require("../controller/product_controller");
 const uploader = require("../middleware.js/uploader");
 
@@ -9,13 +8,14 @@ const uploader = require("../middleware.js/uploader");
 const productController = new ProductController();
 
 router.route("/")
-.get((req, res, next) => { productController.getAllproducts(req, res, next); })
-.post(uploader.single("image"), (req, res, next) => { productController.addProduct(req, res, next); });
+.get(productController.getAllproducts)
+.post(uploader.single("image"), productController.addProduct); 
+// to upload multiple image uploader.array("image", number of image(if empty load all))....see product_controller.js
 
 router.route("/:id")
-.get((req, res, next) => { productController.getProductById(req, res, next); })
-.put(uploader.single("image"), (req, res, next) => { productController.updateProductById(req, res, next); })
-.delete((req, res, next) => { productController.deleteProductById(req, res, next); })
+.get(productController.getProductById)
+.put(uploader.single("image"), productController.updateProductById)
+.delete(productController.deleteProductById)
 
 
 module.exports = router;
