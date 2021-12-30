@@ -1,17 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const UserModel = require("../model/user_model");
 
-router.route("/")
-.get((req, res, next) => {
-     res.json();
-})
-.post((req, res, next) => {
-    res.json({
-        body: req.body
-    });
+router.post("./register", (req, res, next) => {
+
 });
 
-router.route("/:id")
+router.post("./login", (req, res, next) => {
+
+});
 
 
 module.exports = router;
