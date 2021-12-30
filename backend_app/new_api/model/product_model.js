@@ -18,6 +18,7 @@ const ProductSchema = new mongoose.Schema({
           max: 100,
           default: 0
       },
+      image: String,
       description: String,
       manufacture_date: Date,
 }, {

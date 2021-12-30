@@ -17,11 +17,17 @@ getAllproducts(req, res, next) {
 }
 
 addProduct(req, res, next) {
+    // console.log("req body", req.body);
+    // console.log("req file", req.file);
+    if(req.file) {
+        req.body.image = req.file.filename;
+    }
+    // console.log(req.body.image);
     const product = new ProductModel(req.body);
-
+    
     // object mapping(body mapping)
     // product.title = req.body.name
-
+    
     product.save(function(err, success) {
         if(err) {
             next(err);
