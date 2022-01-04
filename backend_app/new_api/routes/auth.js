@@ -2,6 +2,18 @@ const express = require("express");
 const router = express.Router();
 const passwordHash = require("password-hash"); 
 const UserModel = require("../model/user_model");
+const jwt = require("jsonwebtoken");
+const isLoggedIn = require("../middleware.js/isLoggedIn");
+
+const generateToken = (user) => {
+    let token = jwt.sign({
+        _id: user.id,
+        name: user.name,
+        email: user.email,
+        password: user.password
+    }, "Private key");
+    return token;
+}
 
 router.post("/register", (req, res, next) => {  
 
@@ -47,7 +59,7 @@ router.post("/login", (req, res, next) => {
                      res.json({
                          data: {
                              user: user,
-                             token: ""
+                             token: generateToken(user)
                          },
                          msg: "Login success.",
                          status: 200
@@ -57,5 +69,23 @@ router.post("/login", (req, res, next) => {
        });
 });
 
+
+router.get("/dashboard", isLoggedIn, (req, res, next) => {
+    res.json({
+        data: req.user,
+        msg: "Welcome to dashboard",
+        status: true
+    })
+       
+}) 
+
+router.get("/admin", isLoggedIn, (req, res, next) => {
+    res.json({
+        data: req.user,
+        msg: "Welcome to admin page",
+        status: true
+    })
+       
+})
 
 module.exports = router;

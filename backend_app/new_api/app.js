@@ -36,6 +36,8 @@ app.use(function(err, req, res, next) {
 app.listen(9000, (err) => {
   if (err) {
   console.log("Error: ", err);
+  } else {
+    console.log("Server is listening at port 9000....")
   }
 });
 module.exports = app;
