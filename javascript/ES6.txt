@@ -1,0 +1,145 @@
+Oracle has a trademark on the term JavaScript, so the actual standard that 
+modern JavaScript implements is called the ECMAScript standard, or ES. 
+The primary JavaScript standard is ECMAScript 5, or ES5, released in 2009. 
+This is vanilla JavaScript without any special features, supported everywhere, even in IE 9.
+
+ES6 is a fairly new specification, released in 2015, and supports many new features. 
+It’s technically called ES2015, and each annual release after it is denoted by the year of its release. 
+But everyone calls it ES6 anyway, so we’re sticking with that.
+
+some of the major updates in es6 are as follow.
+
+a.Object Shorthand
+
+New in JavaScript with ES6/ES2015, 
+if you want to define an object who's keys have the same name as the variables passed-in as properties, 
+you can use the shorthand and simply pass the key name. 
+Here’s how you can declare an object with the 
+         new ES6 / ES2015 syntax:                          old ES5 syntax
+             let cat = 'Miaow';                         var cat = 'Miaow';
+             let dog = 'Woof'                           var dog = 'Woof';
+             let dog = 'Woof';                          var bird = 'Peet peet';
+             let bird = 'Peet peet';                    var someObject = {
+             let someObject = {                                 cat: cat,  
+                cat,                                            dog: dog,
+                dog,                                              bird: bird
+                bird                                     }
+                
+             }    
+             console.log(someObject);
+
+            //{
+            //  cat: "Miaow",
+            //  dog: "Woof",
+            //  bird: "Peet peet"
+            //}        
+
+            e.g const a  = {
+                      name: "Ashim Sharma"
+            };
+            const b = {
+                a
+            };
+            console.log(a) ////{a:{name:"Ashim Sharma"}};
+
+b. Destructuring
+
+     Destructuring means to break down a complex structure into simpler parts. 
+     With the syntax of destructuring, you can extract smaller fragments from objects and arrays. 
+     It can be used for assignments and declaration of a variable.    
+
+     var arr = ["Hello", "World"]  
+     // destructuring assignment  
+     var [first, second] = arr;  
+               console.log(first); // Hello  
+               console.log(second); // World   
+     By using the rest operator (…) in array destructuring, you can put all the remaining elements 
+     of an array in a new array.   
+     var colors = ["Violet", "Indigo", "Blue", "Green", "Yellow", "Orange", "Red"];  
+                    // destructuring assignment  
+                    var [a,b,...args] = colors;  
+                    console.log(a);    // Violet
+                    console.log(b);    // Indigo
+                    console.log(args); // [ 'Blue', 'Green', 'Yellow', 'Orange', 'Red' ]
+    Swapping variables
+    var x = 100, y = 200;  
+       [x, y] = [y, x];  
+       console.log(x); // 200  
+       console.log(y); // 100     
+
+c. Spread and Rest operator
+
+        The spread operator expands an iterable object into its individual elements. 
+        An iterable object is anything that you can loop over such as Array, Map, Set, DOM NodeList, etc.
+            //An Array of fruits
+            const fruits = ['Apple', 'Banana', 'Watermelon'];
+            //Output the value of the array using the spread operator
+            console.log(...fruits);
+            //Output -> Apple Banana Watermelon
+            use cases of spread operator
+        1. copy arrays and objects 
+                        //animals array initialized
+                        const animals = ['dog', 'sheep', 'goat'];
+                        //animalsCopy array is created with a Shallow copy of animals array values
+                        const animalsCopy = [...animals];
+                        //Display value on the console
+                        console.log(animalsCopy);
+                        //Output -> Array(3) ["dog", "sheep", "goat"]
+                        console.log(animals === animalsCopy); //Output -> false
+                        //Important thing to note here is that animals !== animalsCopy (Only a Shallow copy is made)
+        2. merging arrays and objects 3. with string it exract characters 4. arguments to a function 
+        5. spread operator with destructuring
+
+d. Arrow functions
+         let myFunction = (a, b) => a * b;
+e. Template literals 
+         Before ES6, template literals were called as template strings.
+          Unlike quotes in strings, template literals are enclosed by the backtick (` `) character 
+          (key below the ESC key in QWERTY keyboard). Template literals can contain placeholders, 
+          which are indicated by the dollar sign and curly braces ($(expression}). Inside the backticks, 
+          if we want to use an expression, then we can place that expression in the ($(expression}).
+                        var name = 'World';  
+                        var cname = 'javaTpoint';               
+                        console.log(`Hello, ${name}!  
+                        Welcome to ${cname}`); // output Hello, World!
+                                                         Welcome to javaTpoint 
+
+f. Import & Export 
+g. Default parameters
+           Default Parameters Default parameters are exactly what they sound like:
+           the values that things default to when no other values are provided. 
+           In ES6, they are syntactic sugar for checking whether a function is passed an undefined argument and, 
+           if so, setting a given default value. 
+           // Basic syntax
+                function multiply (a, b = 2) {
+                return a * b;
+                }
+                multiply(5); // 10
+
+                // Default parameters are also available to later default parameters
+                function foo (num = 1, multi = multiply(num)) {
+                return [num, multi];
+                }
+                foo(); // [1, 2]
+                foo(6); // [6, 12]   
+
+h. classes 
+      class MyClass {
+            constructor() {
+                this.answer = 42;
+            }
+      }
+
+      const obj = new MyClass();
+      obj.answer; // 42 
+
+i. Block scope 
+      use of const, let, and var
+                                                
+                                                      
+            
+            
+           
+
+                                               
+           
