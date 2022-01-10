@@ -8,7 +8,7 @@ class Register extends react.Component{
             name: "",
             email: "",
             password: "",
-            status: "",
+            status: "inactive",
             roles: ""
         }
     }
@@ -31,7 +31,7 @@ class Register extends react.Component{
         console.log(this.state);
     }
     render(){
-         return <div className="container">
+         return( <div className="container">
                    <div className="row">
                       <div className="col-12">
                         <h4 className="text-center">Register User</h4>
@@ -41,19 +41,19 @@ class Register extends react.Component{
                             <div className="row mb-3">
                               <label className="col-sm-12 col-md-3">Name:</label>
                               <div className="col-sm-12 col-md-9">
-                                  <input type="text" onChange = {this.handleChange} name = "name" className="form-controll form-controll-sm" placeholder="Enter your name..."/>
+                                  <input type="text" onChange = {this.handleChange} name = "name" className="form-control form-control-sm" placeholder="Enter your name..."/>
                               </div> 
                             </div>
                             <div className="row mb-3">
                               <label className="col-sm-12 col-md-3">Email:</label>
                               <div className="col-sm-12 col-md-9">
-                                  <input type="email" onChange = {this.handleChange} name = "email" className="form-controll form-controll-sm" placeholder="Enter your email..."/>
+                                  <input type="email" onChange = {this.handleChange} name = "email" className="form-control form-control-sm" placeholder="Enter your email..."/>
                               </div> 
                             </div>
                             <div className="row mb-3">
                               <label className="col-sm-12 col-md-3">Password:</label>
                               <div className="col-sm-12 col-md-9">
-                                  <input type="password" onChange = {this.handleChange} name = "password" className="form-controll form-controll-sm" placeholder="Enter your password..."/>
+                                  <input type="password" onChange = {this.handleChange} name = "password" className="form-control form-control-sm" placeholder="Enter your password..."/>
                               </div> 
                             </div>
                             <div className="row mb-3">
@@ -66,7 +66,7 @@ class Register extends react.Component{
                    </div>
                    
                 </div>
-    }
+         )}
 }
 
 export default Register;

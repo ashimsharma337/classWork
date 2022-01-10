@@ -6,6 +6,8 @@ import State from "./State";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from "./components/Register_components/Register"
 import Header from "./components/Header";
+import Validation from "./components/Register_components/Validation";
+
 
 reactdom.render(
     <>
@@ -13,7 +15,8 @@ reactdom.render(
     <Props name="Ashim" address="kathmandu"></Props>
     <State/>*/}
     <Header/>
-    <Register/>
+    {/* <Register/> */}
+    <Validation/>
     </>
     ,document.getElementById("app")
 );
