@@ -27,16 +27,27 @@ class Validation extends react.Component{
         // console.log(e.target.name);
         // console.log(e.target.value);
         const {name, value} = e.target;
-        this.setState(() => ({
+
+        console.log("Before state: ", this.state);
+
+        this.setState((preState) => ({
+
+            data: {
+
+            ...preState.data,
+
             [name]: value
+
+            }
         }), () => {
-            console.log("State:", this.state);
+            console.log("After set:", this.state);
         });
         // console.log(this.state);
     }
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
+        // http client request
     }
     render(){
         return (<div className="container">
