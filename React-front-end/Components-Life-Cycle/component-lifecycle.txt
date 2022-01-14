@@ -1,0 +1,63 @@
+lifecycle methods allow us to invoke code blocks through 
+the lifecycle of updating data and rendering the DOM.
+
+The three major phases of the React component lifecycle are Mounting, Updating, and Unmounting.
+
+1. Mounting(Initialization)
+
+Mounting is the term used in React for when a component is initialized and rendered in the DOM(these are all self invoking function)
+        a. constructor(props)
+             constructor is called first, it recieves to params props and state(we set local state), 
+             state is default initialized so we put only props(super must be called after constructor)
+
+             This is the first block of code that is executed when a component class object is being created. 
+             You should always pass props to the constructor method and then call ‘super(props)’ in the constructor as well. The ‘super’ keyword calls the constructor method in the parent class. Calling ‘super(props)’ calls the parent constructor with the child component’s props initializing the React.Component object constructor giving us the many React features we know and love.
+             The constructor method is also where we initiate our state, or our mutable component data. 
+             The this.state value is set to a Javascript object.
+             The constructor is also where you define the class methods and bind them to ‘this’ so that 
+             you can access this.state, this.method and so on within those given methods. 
+             When the constructor method is called, no mounting has taken place.
+
+        b. componentWillMount()
+            The componentWillMount method is called after the constructor but before the component is rendered.
+            This is a great time to make requests for data from external APIs. 
+            However, one thing to keep in mind is that React handles requests asynchronously.
+            Meaning that your code will be executed, 
+            but React will not wait for the response before moving onto the rest of the lifecycle methods.
+            It is Called immediately before mounting occurs, and before Component#render. Avoid introducing any side-effects or subscriptions in this method.
+            Note: the presence of getSnapshotBeforeUpdate or getDerivedStateFromProps prevents this from being invoked.
+            @deprecated — 16.3, use componentDidMount or the constructor instead; will stop working in React 17
+        c. render()
+            this method returns the React elements that will be rendered in the DOM
+            The render function is only called once during the mounting process, 
+            and is subsequently called whenever updates are made to the component’s state or props.
+        d. componentDidMount()
+            All the AJAX requests, Http req and the DOM or state updation should be coded in the componentDidMount () method block.
+
+2. Updating 
+    a. componentWillReceiveProps(nextProps)
+            The componentWillReceiveProps method is called right before props are actually updated. This method has access to what the next props will be via ‘nextProps’. This provides a unique point to compare the current props values to the new props values. If you need to update state to match the new props, this is a great place to do it.
+            Notice how this method only refers to props, not state. A ‘setState’ call that updates state, and not props, will not invoke this method. This method is typically called when the parent component state is being passed down as props and then the parent state is updated thus updating the component’s props.
+    b. shouldComponentUpdate
+            The shouldComponentUpdate method is unique in that it is the only method that determines if other lifecycle methods will be called. This method must return a boolean value (the default is true) which will determine if componentWillUpdate, render, and componentDidUpdate will be invoked. If shouldComponentUpdate returns True then the remaining update methods will be invoked. This is the default behavior. However, if shouldComponentUpdate returns false, then the rest of the update methods will not be called.
+            The shouldComponentUpdate method has access to the new props and state via the ‘nextProps’ and ‘nextState’ parameters.
+    c. componentWillUpdate(nextProps, nextState)
+            The componentWillUpdate method is called right before the re-render after updating props or state. This method has access to the ‘nextProps’ and ‘nextState’ parameters which makes it great for making changes in preparation for a re-render.
+            React likes to keep you from creating unending chains of ‘setState’ cause by one update, so you can’t call setState in the componentWillUpdate method. If you do need to setState based on a props change, then you will want to make that change in the componentWillRecieveProps method.
+    d. render()
+            We only see changes to the DOM when render is called on a component. One of the most common methods for calling render is using this.setState(). The this.setState() method accepts a JSON object that update the mutable state and then calls a re-render.
+            Render on updates only occurs if shouldComponentUpdate returns true, and if props or state are changed. There is the option to call a force update in React, but try to avoid that at all cost.
+    e. componentDidUpdate(prevProps, prevState)
+            The componentDidUpdate method is invoked right after the DOM has been updated. This method has access to the previous props and state via ‘prevProps’ and ‘prevState’ and is only called if shouldComponentUpdate returns true.
+            This is a great time to operate on the DOM if an update is needed via a different library such as D3, or to make network requests to sync back-end databases with state changes.
+
+3. Unmounting / destroy
+    Unmounting occurs when a React component is removed from the DOM
+
+  a. componentWillUnmount()
+    The componentWillUmount method is called every time after a React component is removed from the DOM. 
+    This is a great time to do some data clean up and close open socket connections. For example, 
+    if you have a real-time messaging component that initiated a real-time database connection 
+    in componentWilMount you will want to close that connection in comonentWillUnmount. 
+    Otherwise you will stack up several open connections that will slow down your page.
+    if something is running in primary memory this function will release and make app fast.
