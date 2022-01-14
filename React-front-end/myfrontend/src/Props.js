@@ -20,6 +20,8 @@ import reactdom from "react-dom";
 //     return <h1>My name is {name}. I live in {address}</h1>
 // }
 
+// Props are immutable where as state are mutable
+
 // without destucturing
 function Props({name, address}) {
     return <h1>My name is {Props.defaultProps.name}. I live in {address}.</h1>
