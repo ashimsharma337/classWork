@@ -9,7 +9,7 @@ class Footer extends react.Component{
       render(){
           return(
             <div className="footer">
-            &copy; Copyright 2022 Ashim Sharma
+            <i className="far fa-copyright"></i> Copyright 2022 Ashim Sharma
             </div>
           )
       }

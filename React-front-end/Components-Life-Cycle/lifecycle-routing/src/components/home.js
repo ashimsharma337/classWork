@@ -1,4 +1,7 @@
 import react from "react";
+import "../index.css";
+import image from "../ecom-pic.jpg";
+import image2 from "../icom-2.png"
 
 class Home extends react.Component{
     constructor() {
@@ -6,7 +9,7 @@ class Home extends react.Component{
     }
     render(){
         return(
-            <h1>This is home page.</h1>
+            <img className="ecom-image" src={image2} alt= "ecommerce picture"/>
         )
     }
 }

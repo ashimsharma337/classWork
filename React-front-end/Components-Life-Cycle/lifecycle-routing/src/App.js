@@ -7,9 +7,9 @@ import Lifecycle from "../src/components/lifecycle";
 const App = () => {
     return (
         <>
-         {/* <AppRouting/>
-         <Footer/> */}
-        <Lifecycle loggedIn = "false"/>
+         <AppRouting/>
+         <Footer/>
+        {/* <Lifecycle loggedIn = "false"/> */}
         </>    
     )
 }
