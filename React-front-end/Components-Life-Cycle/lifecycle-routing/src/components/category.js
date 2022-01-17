@@ -1,4 +1,5 @@
 import react from "react";
+import {Header} from "./header";
 
 class Category extends react.Component{
     constructor(){
@@ -6,6 +7,8 @@ class Category extends react.Component{
     }
     render(){
       return(
+        <>
+        <Header/>
         <div className="container">
         <div className="row">
          <div>
@@ -90,6 +93,7 @@ class Category extends react.Component{
           </div>
         </div>
       </div>
+      </>
       )
     }
 }

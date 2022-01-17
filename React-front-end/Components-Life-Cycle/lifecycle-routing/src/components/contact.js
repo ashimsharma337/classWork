@@ -1,4 +1,5 @@
 import react from "react";
+import {Header} from "./header";
 
 class Contact extends react.Component{
      constructor(){
@@ -6,6 +7,8 @@ class Contact extends react.Component{
      }
      render(){
          return(
+          <>
+          <Header/>
            <div className="container">
                <h4 className="text-center mt-3">We like to hear from you!</h4>
                <hr></hr>
@@ -19,6 +22,7 @@ class Contact extends react.Component{
                     <button type="submit" className="btn-primary mt-3">Send</button>
                 </div>
           </div>
+        </>
          )
      }
 

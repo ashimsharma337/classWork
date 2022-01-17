@@ -1,7 +1,7 @@
 import react from "react";
 import { Link } from "react-router-dom";
 
-class Header extends react.Component{
+export class Header extends react.Component{
     constructor(){
         super()
     }
@@ -39,4 +39,35 @@ class Header extends react.Component{
     }
 }
 
-export default Header;
+export function AdminHeader() {
+       return(
+        <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div className="container-fluid">
+              <Link className="navbar-brand" to="#">Local Bazar</Link>
+              <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <ul className="nav">
+                <li className="nav-link">
+                  <Link to="/dashboard" className = "navbar-brand">Dashboard</Link>
+                </li>
+                <li className="nav-link">
+                  <Link to="/product" className = "navbar-brand">Product</Link>
+                </li>
+                <li className="nav-link">
+                  <Link to="/product/create" className = "navbar-brand">Add Product</Link>
+                </li>
+                <li className="nav-link">
+                  <Link to="/product/123" className = "navbar-brand">Product Detail</Link>
+                </li>
+                <li className="nav-link">
+                  <Link to="/product/1" className = "navbar-brand" >Edit Product</Link>
+                </li>
+                <li className="nav-link">
+                  <Link to="/logout" className = "navbar-brand">Logout</Link>
+                </li>
+              </ul>
+         </div>
+    </nav>
+       )
+}

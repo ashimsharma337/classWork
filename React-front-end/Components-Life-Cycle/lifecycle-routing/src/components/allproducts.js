@@ -1,4 +1,5 @@
 import react from "react";
+import {Header} from "./header"
 
 class Allproduct extends react.Component{
     constructor(){
@@ -42,6 +43,8 @@ class Allproduct extends react.Component{
                 return <div>Loading...</div>;
                 } else {
                     return (
+                      <>
+                       <Header/>
                         <div className="row">
                             {items.map(item => (
                                 <div className="card" style={{ width: "318px" }}>
@@ -53,6 +56,7 @@ class Allproduct extends react.Component{
                                 </div>
                             ))}
                         </div>
+                    </>
                         
                     );
                 }

@@ -1,4 +1,5 @@
 import react from "react";
+import {Header} from "./header";
 
 class Login extends react.Component{
     constructor(){
@@ -7,6 +8,7 @@ class Login extends react.Component{
     render(){
         return(
             <>
+            <Header/>
             <div className="container">
              <form> 
                     <h4 className="text-center mt-3">Please Login</h4>

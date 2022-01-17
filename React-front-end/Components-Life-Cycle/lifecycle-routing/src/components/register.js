@@ -1,5 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Header} from "./header";
 
 const commonFields = {
     name: '',
@@ -96,6 +97,8 @@ export class Register extends React.Component{
     }
     render(){
         return (
+            <>
+            <Header/>
             <div className="container">
                 <div className="row">
                     <div className="col-12">
@@ -161,6 +164,7 @@ export class Register extends React.Component{
                     </div>
                 </div>
             </div>
+            </>
         );
     }
 }
