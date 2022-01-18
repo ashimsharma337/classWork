@@ -1,5 +1,5 @@
-import React from 'react'
-import {BrowserRouter, Routes, Route, Outlet} from "react-router-dom";
+import React, {useEffect} from 'react'
+import {BrowserRouter, Routes, Route, Outlet, useParams, useNavigate, Navigate} from "react-router-dom";
 import Home from './home';
 import {AdminHeader} from './header';
 import { Register } from './register';
@@ -10,6 +10,16 @@ import Allproduct from './allproducts';
 
 
 function Admin(){
+  const navigate = useNavigate();
+   const is_logged_in = localStorage.getItem("is_LoggedIn");
+   console.log(is_logged_in);
+ 
+     useEffect(() => {
+      if(!is_logged_in){
+       navigate("/login");
+      }
+     })
+   
     return (
       <>
         <AdminHeader/>
@@ -20,6 +30,15 @@ function Admin(){
 
 
 function Product(){
+  const navigate = useNavigate();
+  const is_logged_in = localStorage.getItem("is_LoggedIn");
+   console.log(is_logged_in);
+ 
+     useEffect(() => {
+      if(!is_logged_in){
+       navigate("/login");
+      }
+     })
     return (
       <>
         <AdminHeader/>
@@ -31,6 +50,15 @@ function Product(){
 }
 
 function ProductForm(){
+  const navigate = useNavigate();
+  const is_logged_in = localStorage.getItem("is_LoggedIn");
+   console.log(is_logged_in);
+ 
+     useEffect(() => {
+      if(!is_logged_in){
+       navigate("/login");
+      }
+     })
     return (
       <>
         <h4>Product Form</h4>
@@ -39,9 +67,11 @@ function ProductForm(){
 }
 
 function ProductDetail(){
+    const params = useParams();
+    console.log("Params ", params);
     return (
       <>
-        <h4>Product Detail</h4>
+        <h4>Product Detail of: {params.id}</h4>
       </>
     )
 }
@@ -54,6 +84,12 @@ function ProductEdit(){
     )
 }
 
+function PrivateRoute({component: Component}){
+     const is_logged_in = localStorage.getItem("is_LoggedIn");
+
+     return (is_logged_in ? Component : <Navigate to ="/login"/>)
+}
+
 
 const AppRouting = () => {
     return (
@@ -63,17 +99,22 @@ const AppRouting = () => {
                 <Route path = "/home" element = {<Home/>}></Route>
                 {/*Home component routing}
                 <Route path = "/register" element = {<Register/>}></Route>
-                <Route path = "/login" element = {<Login/>}></Route>
                 <Route path = "/contact" element = {<Contact/>}></Route>
                 <Route path = "/category" element = {<Category/>}></Route>
                 <Route path = "/allproducts" element = {<Allproduct/>}></Route> */}
                 
                 {/*Admin coomponent routing*/}
-                <Route path = "/admin" element = {<AdminHeader/>}></Route>
-                <Route path = "/dashboard" element = {<Admin/>}></Route>
+                {/* <Route path = "/admin" element = {<AdminHeader/>}></Route> */}
+
+                <Route path = "/admin" element = {<PrivateRoute component={<Admin></Admin>}>
+                       
+                </PrivateRoute>}></Route>
+
+                <Route path = "/login" element = {<Login/>}></Route>
 
                 {/*nested routing}*/}
-                <Route path = "/product" element = {<Product/>}>
+                <Route path = "/product">
+                    <Route index element = {<PrivateRoute component={<Product/>}></PrivateRoute>}/>
                     <Route path = "create" element = {<ProductForm/>}/>
                     <Route path = ":id" element = {<ProductDetail/>}/>
                     <Route path = "edit/:id" element = {<ProductEdit/>}/>
