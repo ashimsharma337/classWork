@@ -8,6 +8,7 @@ function Login(){
     const navigate = useNavigate();
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
+    
     const handleChange = (event) => {
          const {name, value, type} = event.target;
 
@@ -26,6 +27,7 @@ function Login(){
 
         localStorage.setItem("is_LoggedIn", true);
         sessionStorage.setItem("is_LoggedIn", true);
+        navigate("/admin");
         
     }
 

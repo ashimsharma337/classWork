@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {BrowserRouter, Routes, Route, Outlet, useParams, useNavigate, Navigate} from "react-router-dom";
+import {BrowserRouter, Routes, Route, Outlet, useParams, useNavigate, Navigate, Link} from "react-router-dom";
 import Home from './home';
 import {AdminHeader} from './header';
 import { Register } from './register';
@@ -7,6 +7,8 @@ import Login from './login';
 import Contact from './contact';
 import Category from './category';
 import Allproduct from './allproducts';
+import { toast, ToastContainer } from 'react-toastify';
+import DataTable from 'react-data-table-component';
 
 
 function Admin(){
@@ -19,19 +21,79 @@ function Admin(){
        navigate("/login");
       }
      })
-   
+    toast.success("Welcome to admin Panel.");
     return (
       <>
         <AdminHeader/>
+        <ToastContainer></ToastContainer>
         <h4>Admin panel</h4>
       </>
     )
 }
 
+function Actions(){
+      return(
+        <>
+          <Link to ="/edit">Edit</Link>
+          <Link to ="/delete">Delete</Link>
+        </>
+      )
+}
 
 function Product(){
   const navigate = useNavigate();
   const is_logged_in = localStorage.getItem("is_LoggedIn");
+  const columns = [
+    {
+        name: 'Title',
+        selector: row => row.title,
+        sortable: true,
+    },
+    {
+        name: 'Category',
+        selector: row => row.category,
+        sortable: true,
+    },
+    {
+      name: 'Price',
+      selector: row => row.price,
+      sortable: true,
+    },
+    {
+      name: 'Discount',
+      selector: row => row.discount,
+      sortable: false,
+    },
+    {
+      name: 'Status',
+      selector: row => row.status,
+      sortable: false,
+    },
+    {
+      name: 'Action',
+      selector: row => (<Actions></Actions>),
+      sortable: false,
+    },
+];
+
+const data = [
+    {
+        id: 1,
+        title: 'Product 1 ',
+        category: 'SmartPhones',
+        price: 20000,
+        discount: 0,
+        status: "active"
+    },
+    {
+        id: 2,
+        title: 'Product 2 ',
+        category: 'SmartPhones',
+        price: 15000,
+        discount: 0,
+        status: "inactive", 
+    },
+];
    console.log(is_logged_in);
  
      useEffect(() => {
@@ -42,8 +104,10 @@ function Product(){
     return (
       <>
         <AdminHeader/>
-        <h4>Product Page</h4>
-        <hr></hr>
+        <DataTable
+            columns={columns}
+            data={data}
+        />
         <Outlet/>
       </>
     )
@@ -113,6 +177,7 @@ const AppRouting = () => {
                 <Route path = "/login" element = {<Login/>}></Route>
 
                 {/*nested routing}*/}
+
                 <Route path = "/product">
                     <Route index element = {<PrivateRoute component={<Product/>}></PrivateRoute>}/>
                     <Route path = "create" element = {<ProductForm/>}/>
