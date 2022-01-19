@@ -1,0 +1,84 @@
+When we first learn how to work with database, 
+it all comes down to two types of database set ups which are ORM (object Relation Mapping) 
+and ODM (Object Document Mapping)
+
+ORM which is to map an object with a relational world, 
+it basically converts data between incompatible types in object oriented programming languages.
+ORM wraps the implementation specific details of storage drivers in an API (application program interface),
+and maps the relational fields to an object members. For example if I have a table of employees, 
+it is mapped to a single object for all employees, with various methods associated with it.
+ODM on the other hand is an Object Document Mapper, which maps objects with a Document Database like MongoDB.
+
+The main difference is that ORM is for MySQL databases, while ODM does the mapping for document representation of data.
+best way to remember what ORM does would be to think of it as an excel spread sheet, with rows and columns. 
+When using this set up, you want to be sure you have a great plan on how you want to tackle the current application, 
+it does not allow as many modifications like ODM does. With ODM we can add new fields and properties easily 
+but with ORM when adding a new field you need to keep in mind that nothing stays empty so it needs 
+a value to be as default unless you want to go into each and modify.
+
+In MVC pattern ODM is a model, and  it is provided by mongoose 
+
+e.g If we are creating nodejs app for bookstore and choose mongodb as a database 
+
+1. Derive a custom schema
+        var BookSchema = mongoose.Schema({
+        name: String,
+        price: Number,
+        quantity: Number
+        });
+
+2.Compile Schema to Model
+        Once we derive a custom schema, we could compile it to a model.
+        Following is an example where we define a model named Book with the help of BookSchema.
+
+        var Book = mongoose.model('Book', BookSchema, <collection_name>);
+        <collection_name> is the name of the collection you want the documents go to.
+
+3.Initialize a Document
+        We may now use the model to initialize documents of the Model.
+        var book1 = new Book({ name: 'Introduction to Mongoose', price: 10, quantity: 25 });
+
+while making database we should know the diffrence between entity and attribute 
+
+The basic difference between entity and attribute is that an entity is a distinguishable real-world object that 
+exists, whereas attribute describes the elementary features of an entity.
+
+In the relational database model, we store data in the tables. So, the rows of table denote the entities and the 
+column header of the table denotes attributes of an entities in a table.
+
+example 
+         // ecommerce
+            table, entity 
+            Entity::::Attributes
+            product => attribute
+                       description 
+                       price,
+                       name,
+                       size,
+                       stock,
+                       model,
+                       image,
+                       discount,
+                       warrenty,
+                       mfg date
+                       is featured
+                       brand_id,
+                       category_id
+                       tax
+            users 
+            category 
+            brand 
+            order 
+            payment
+            offer 
+            pages 
+            reviews 
+            gallery 
+
+// School mangement system 
+   users
+   role 
+   classes 
+   sections
+   attendence 
+   fees 

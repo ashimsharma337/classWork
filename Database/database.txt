@@ -145,6 +145,8 @@ Update -
                     }
                     e.g db.users.update({email:"ashim@email.com"}, {$set: {name: "Sharma Ashim"}});
                         db.users.update({age: {$gte: "16"}}, {$set: {name: "Above 16"}}, {multi: true});
+                        // To remove key value pair or to unset 
+                        db.products.updateMany({}, { $unset:{age: 1}});
 Delete - 
        db.collectionname.deleteOne();
        db.collectionname.deletemany();
