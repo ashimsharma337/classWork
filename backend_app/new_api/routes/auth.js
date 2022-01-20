@@ -43,7 +43,7 @@ router.post("/login", (req, res, next) => {
           email: req.body.email
       }, {}, function(err, user) {
               if(!user) {
-                  res.status.json({
+                  res.status(200).json({
                       data: null,
                       msg: "User not found!",
                       status: 404

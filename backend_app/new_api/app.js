@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 const api_routes = require("./routes/api");
+const cors = require("cors");
 require("./db_init");
 
 var app = express();
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // api routes
+app.use(cors());
 app.use("/", api_routes);
 // for web base application versioning in backend forward and backward compatibily(it is manage through url)
 // app.use("api/v1", api_routes);
