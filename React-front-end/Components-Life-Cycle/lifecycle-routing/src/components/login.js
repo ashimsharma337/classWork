@@ -2,6 +2,7 @@ import react, {useState, useEffect} from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import {Header} from "./header";
 import axios from "axios";
+import {toast, toastContaier, ToastContainer} from "react-toastify";
 
 
 function Login(){
@@ -26,9 +27,9 @@ function Login(){
         e.preventDefault();
         // console.log("Email: ", email);
         // console.log("Password: ", password);
-        console.log(process.env.NODE_ENV);
-        console.log(process.env.REACT_APP_API_URL);
-        console.log(process.env);
+        // console.log(process.env.NODE_ENV);
+        // console.log(process.env.REACT_APP_API_URL);
+        // console.log(process.env);
         // calling server
         // fetch, axios, superagent 
         axios.post(`${process.env.REACT_APP_API_URL}/login`,
@@ -47,7 +48,16 @@ function Login(){
             // timeoutErrorMessage: "Request timeout"
         })
         .then((response) => {
-            console.log("Response: ", response);
+            const result = response.data;
+            if(result.status != 200){
+                toast.error(result.msg);
+            } else {
+                localStorage.setItem("token", result.data.token);
+                console.log(result.data.token);
+                toast.success("Welcome To Admin Panel.");
+                navigate("/admin");
+            }
+            // console.log("Response: ", response);
         })
         .catch((error) => {
             console.log("Error: ", error);
@@ -94,7 +104,7 @@ function Login(){
                     <button type="submit" className="btn btn-primary" >Login</button>
               </form>
             </div>
-                    
+            <ToastContainer></ToastContainer>     
             </>
         )
     

@@ -13,8 +13,8 @@ import DataTable from 'react-data-table-component';
 
 function Admin(){
   const navigate = useNavigate();
-   const is_logged_in = localStorage.getItem("is_LoggedIn");
-   console.log(is_logged_in);
+   const is_logged_in = localStorage.getItem("token");
+   // console.log(is_logged_in);
  
      useEffect(() => {
       if(!is_logged_in){
@@ -42,7 +42,7 @@ function Actions(){
 
 function Product(){
   const navigate = useNavigate();
-  const is_logged_in = localStorage.getItem("is_LoggedIn");
+  const is_logged_in = localStorage.getItem("token");
   const columns = [
     {
         name: 'Title',
@@ -94,7 +94,7 @@ const data = [
         status: "inactive", 
     },
 ];
-   console.log(is_logged_in);
+   console.log(!is_logged_in);
  
      useEffect(() => {
       if(!is_logged_in){
@@ -115,7 +115,7 @@ const data = [
 
 function ProductForm(){
   const navigate = useNavigate();
-  const is_logged_in = localStorage.getItem("is_LoggedIn");
+  const is_logged_in = localStorage.getItem("token");
    console.log(is_logged_in);
  
      useEffect(() => {
@@ -149,7 +149,7 @@ function ProductEdit(){
 }
 
 function PrivateRoute({component: Component}){
-     const is_logged_in = localStorage.getItem("is_LoggedIn");
+     const is_logged_in = localStorage.getItem("token");
 
      return (is_logged_in ? Component : <Navigate to ="/login"/>)
 }
