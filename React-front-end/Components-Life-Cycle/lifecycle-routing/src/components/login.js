@@ -1,6 +1,8 @@
 import react, {useState, useEffect} from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import {Header} from "./header";
+import axios from "axios";
+
 
 function Login(){
     // let email = "";
@@ -22,12 +24,38 @@ function Login(){
     } 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Email: ", email);
-        console.log("Password: ", password);
+        // console.log("Email: ", email);
+        // console.log("Password: ", password);
+        console.log(process.env.NODE_ENV);
+        console.log(process.env.REACT_APP_API_URL);
+        console.log(process.env);
+        // calling server
+        // fetch, axios, superagent 
+        axios.post(`${process.env.REACT_APP_API_URL}/login`,
+        {
+            email: email,
+            password: password
+        },
+        {
+            // baseURL: ,
+            // responseType: "json",
+            // params: {},
+            headers: {
+                "content-Type": "application/json",
+            },
+            // timeout: 30000,
+            // timeoutErrorMessage: "Request timeout"
+        })
+        .then((response) => {
+            console.log("Response: ", response);
+        })
+        .catch((error) => {
+            console.log("Error: ", error);
+        });
 
-        localStorage.setItem("is_LoggedIn", true);
-        sessionStorage.setItem("is_LoggedIn", true);
-        navigate("/admin");
+        // localStorage.setItem("is_LoggedIn", true);
+        // sessionStorage.setItem("is_LoggedIn", true);
+        // navigate("/admin");
         
     }
 
