@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../login/login_component.css"
 import { Header } from "../common/header/header_component";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -30,16 +33,10 @@ export function Login(){
         // if success, store 
         // fetch, axios, superagent 
        
-
-        localStorage.setItem('is_logged_in', true);
-        // sessionStorage.setItem('is_logged_in', true);
         
-        // console.log("Email: ", email);
-        // console.log("Password: ", password);
-
-        // navigate("/admin");
-
-
+        localStorage.setItem('is_logged_in', true);
+        toast.success("Welcome to admin panel.");
+        navigate("/admin");
     }
 
     useEffect(() => {
@@ -48,9 +45,8 @@ export function Login(){
         const is_logged_in = localStorage.getItem("is_logged_in");
         console.log("Is logged_in", is_logged_in);
         if(is_logged_in){
-
             navigate('/admin');
-        }
+        } 
     });
 
     return (
@@ -85,15 +81,13 @@ export function Login(){
                                     <button className="btn btn-sm btn-success" type="submit">
                                         Login
                                     </button>
-
-
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            
+            <ToastContainer></ToastContainer>
         </>
 
     )

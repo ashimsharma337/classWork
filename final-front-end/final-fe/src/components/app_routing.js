@@ -4,6 +4,7 @@ import {Home} from "./common/home/home_component";
 import { Login } from "./login/login_component";
 import { Register } from "./register/register_component";
 import  Admin  from "./admin/admin";
+import { Logout } from "./logout/logout_component";
 
 function PrivateRoute({component: Component}){
     const is_logged_in = localStorage.getItem('is_logged_in');
@@ -30,6 +31,7 @@ export function AppRouting(){
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
                 <Route path="/admin" element={<PrivateRoute component={<Admin></Admin>}></PrivateRoute>}></Route>
+                <Route path="/logout" element={<Logout></Logout>}></Route>
             </Routes>
         </BrowserRouter>
     );
