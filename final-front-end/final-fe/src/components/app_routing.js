@@ -9,7 +9,7 @@ import { Dashboard } from "../components/admin/dashboard/dashboard_component";
 import { Category } from "../components/admin/category/category_component";
 
 function PrivateRoute({component: Component}){
-    const is_logged_in = localStorage.getItem('is_logged_in');
+    const is_logged_in = localStorage.getItem('token');
     
     // TODO: Token, verify in server 
 

@@ -4,6 +4,7 @@ import "../login/login_component.css"
 import { Header } from "../common/header/header_component";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 
 
 
@@ -32,22 +33,36 @@ export function Login(){
         // TODO: server call , response 
         // if success, store 
         // fetch, axios, superagent 
-       
-        
-        localStorage.setItem('is_logged_in', true);
-        toast.success("Welcome to admin panel.");
-        navigate("/admin");
+        axios.post(`${process.env.REACT_APP_BASE_URL}/login`,
+                   {
+                       email: email,
+                       password: password
+                   },
+                   {
+                       responseType: "json",
+                       params: {},
+                       header: {
+                           "content-type": "application/json"
+                       },
+                       timeout: 30000,
+                       timeErrorMessage: "Request timeout"
+                   })
+                   .then((response) => {
+                       const result = response.data;
+                       if(result.status != 200){
+                           toast.error(result.msg)
+                       } else {
+                           localStorage.setItem("token", result.data.token);
+                           // toast.success("Welcome to the admin panel.");
+                           navigate("/admin");
+                       }
+                       // console.log("Response: ", response);
+                   })
+                   .catch((error) => {
+                       console.log("Error: ", error);
+                   })
     }
 
-    useEffect(() => {
-        // network caller 
-
-        const is_logged_in = localStorage.getItem("is_logged_in");
-        console.log("Is logged_in", is_logged_in);
-        if(is_logged_in){
-            navigate('/admin');
-        } 
-    });
 
     return (
         <>

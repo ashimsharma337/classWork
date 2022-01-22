@@ -1,11 +1,17 @@
 import "../../assests/sb-admin-2.css";
-import { NavLink, Outlet } from "react-router-dom"; 
-import {FaLaughWink} from "react-icons/fa"
+import { Outlet } from "react-router-dom"; 
 import { TopNav } from "./partials/topnav";
 import { Sidebar } from "./partials/sidebar";
+import { useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 
 export function AdminLayout(){
+   
+   useEffect(() => {
+     toast.success("Welcome to Admin panel.");
+   });
+
     return(
     <>
     <div id="wrapper">
@@ -19,6 +25,7 @@ export function AdminLayout(){
             </div>
         </div>
     </div>
+    <ToastContainer></ToastContainer>
     </>
     )
 }
