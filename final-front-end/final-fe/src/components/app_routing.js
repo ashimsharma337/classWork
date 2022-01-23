@@ -9,7 +9,7 @@ import { Dashboard } from "../components/admin/dashboard/dashboard_component";
 import { Category } from "../components/admin/category/category_component";
 
 function PrivateRoute({component: Component}){
-    const is_logged_in = localStorage.getItem('token');
+    const is_logged_in = localStorage.getItem('_at');
     
     // TODO: Token, verify in server 
 
@@ -31,6 +31,7 @@ export function AppRouting(){
             <Routes>
                 <Route path="/" element={<Home></Home>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
+                <Route path="/logout" element={<Logout></Logout>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
 
                 <Route path="/admin" element={<PrivateRoute component={<AdminLayout></AdminLayout>}></PrivateRoute>}>

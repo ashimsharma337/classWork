@@ -29,6 +29,13 @@ export function Sidebar(){
             
         </NavLink>
     </li>
+    <li className="nav-item">
+        <NavLink className="nav-link" to="/logout">
+            <i className="fas fa-fw fa-tachometer-alt"></i>
+            <span>Logout</span>
+            
+        </NavLink>
+    </li>
 
     <hr className="sidebar-divider" />
 

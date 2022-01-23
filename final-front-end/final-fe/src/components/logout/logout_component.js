@@ -1,22 +1,14 @@
 import {useEffect} from "react";
-import {Navigate, useNavigate} from "react-router-dom";
-import {toast, ToastContainer} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 
 export function Logout(){
     const navigate = useNavigate();
-    
+    localStorage.clear();
     
     useEffect(() => {
-        localStorage.clear();
-        toast.error("Good bye!")
         navigate("/admin");
-    })
+    });
     
-    return(
-     <>
-     <h1>Logout page</h1>
-     <ToastContainer></ToastContainer>
-     </>
-    )
+    return null;
 }

@@ -52,7 +52,12 @@ export function Login(){
                        if(result.status != 200){
                            toast.error(result.msg)
                        } else {
-                           localStorage.setItem("token", result.data.token);
+                           localStorage.setItem("_at", result.data.token);
+                           let user = {
+                               name: result.data.user.name,
+                               email: result.data.user.email
+                           }
+                           localStorage.setItem("user_info", JSON.stringify(user));
                            // toast.success("Welcome to the admin panel.");
                            navigate("/admin");
                        }

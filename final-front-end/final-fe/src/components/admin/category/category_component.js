@@ -11,7 +11,7 @@ export function Category(){
           .catch((error) => {
 
           })
-      });
+      },[allCats]);
       
       return(
           <>
