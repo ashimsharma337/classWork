@@ -1,7 +1,18 @@
+import { useEffect, useState } from "react";
+import {httpRequest} from "../../../services/httpclient";
 export function Category(){
-
+     const [allCats, setAllCats] = useState({})
     // TODO: Fetch all the categories from server
+      useEffect(() => {
+          httpRequest.getItem("/category")
+          .then((response) => {
 
+          })
+          .catch((error) => {
+
+          })
+      });
+      
       return(
           <>
 
