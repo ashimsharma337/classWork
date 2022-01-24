@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import {httpRequest} from "../../../services/httpclient";
+import {FaPlus} from "react-icons/fa";
+import { NavLink } from "react-router-dom"; 
 export function Category(){
      const [allCats, setAllCats] = useState({})
     // TODO: Fetch all the categories from server
@@ -16,7 +18,12 @@ export function Category(){
       return(
           <>
 
-            <h4>Category Page</h4>
+            <h4>
+                Category Page
+                <NavLink to="/admin/category/create" className = "btn btn-sm btn-success float-right">
+                    <FaPlus></FaPlus>&nbsp; Add Category 
+                </NavLink>
+            </h4>
             <hr></hr>
             <div className="container-fluid">
                <div className="row">
