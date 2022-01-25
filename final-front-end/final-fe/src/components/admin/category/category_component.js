@@ -3,6 +3,7 @@ import {httpRequest} from "../../../services/httpclient";
 import {FaPlus, FaPen, FaTrash} from "react-icons/fa";
 import { NavLink } from "react-router-dom"; 
 import { toast } from "react-toastify";
+
 export function Category(){
      const [allCats, setAllCats] = useState([])
     // TODO: Fetch all the categories from server
@@ -72,9 +73,9 @@ export function Category(){
                                           {cat.parent_id ? cat.parent_id.title : "-"}
                                       </td>
                                       <td>
-                                        <a href ="" className="btn btn-sm btn-success btn-circle">
+                                        <NavLink to={"/admin/category/"+cat._id} className="btn btn-sm btn-success btn-circle">
                                             <FaPen></FaPen>
-                                        </a>
+                                        </NavLink>
                                         &nbsp;
                                         <button onClick={(ev) => {
                                             let confirmed = window.confirm("Are You sure you want to delete this category ?");

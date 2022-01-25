@@ -7,6 +7,7 @@ export function CategoryForm(props) {
     const [title, setTitle] = useState("");
     const [parent_id, setParentId] = useState(null);
     const [allCats, setAllCats] = useState([]);
+    const [is_loading, setIsLoading] = useState(true);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,8 +30,8 @@ export function CategoryForm(props) {
                 }
             }
         })
-    }, [allCats])
-    console.log(allCats);
+    }, [is_loading])
+    
     return (
         <>
             <div className="container-fluid">

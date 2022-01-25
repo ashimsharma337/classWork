@@ -8,6 +8,7 @@ import { AdminLayout } from "./admin/admin_layout";
 import { Dashboard } from "../components/admin/dashboard/dashboard_component";
 import { Category } from "../components/admin/category/category_component";
 import { CategoryCreate } from "../components/admin/category/categoryCreate_components";
+import { CategoryEdit } from "../components/admin/category/categoryEdit_component";
 
 function PrivateRoute({component: Component}){
     const is_logged_in = localStorage.getItem('_at');
@@ -40,6 +41,7 @@ export function AppRouting(){
                        <Route index element={<Dashboard></Dashboard>}/>
                        <Route path="category" element={<Category></Category>}/>
                        <Route path="category/create" element={<CategoryCreate></CategoryCreate>}/>
+                       <Route path="category/:id" element={<CategoryEdit></CategoryEdit>}/>
 
                 </Route>
                 
