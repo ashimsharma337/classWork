@@ -22,7 +22,7 @@ export function CategoryForm(props) {
         .then((response) => {
             //console.log("Response: ", response);
             if(response.status == 200){
-                if(response.data.length > 0){
+                if(response.data.result.length > 0){
                     let allparents = response.data.result.filter((o) => (o.parent_id == null));
 
                     setAllCats(allparents);
@@ -30,6 +30,7 @@ export function CategoryForm(props) {
             }
         })
     }, [allCats])
+    console.log(allCats);
     return (
         <>
             <div className="container-fluid">
@@ -53,11 +54,11 @@ export function CategoryForm(props) {
                                    )} name="parent_id">
                                        <option value="">--Select Any one--</option>
                                        {
-                                           allCats.map((o) => {
-                                               <option value={o._id}>
+                                           allCats.map((o, index) => (
+                                               <option key={index} value={o._id}>
                                                    {o.title}
                                                </option> 
-                                           })
+                                           ))
                                        }
                                    </select>
                                 </div>

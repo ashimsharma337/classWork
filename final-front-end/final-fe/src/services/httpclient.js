@@ -10,13 +10,18 @@ const http = axios.create({
 const getHeaders = (headers) => {
     let ret_headers = {
         "content-type": "application/json"
-    }
+    };
     return ret_headers
 }
 
-const postItem = (url, data, headers = {}) => {
+const postItem = (url, data, is_restrict=false, headers = {}) => {
       let post_headers = getHeaders(headers);
-      return http.post({url},{data},{post_headers});
+      if(is_restrict){
+        post_headers.headers = {
+            "authorization": localStorage.getItem("_at")
+        }
+      }
+      return http.post(url, data, post_headers);
 }
 
 const getItem = (url, params = {}) => {
@@ -24,8 +29,19 @@ const getItem = (url, params = {}) => {
     return http.get(url, post_headers);
 }
 
+const deleteItem = (url, is_strict=false) => {
+    let headers = getHeaders();
+    if(is_strict){
+        headers.headers = {
+            "authorization": localStorage.getItem("_at")
+        }
+    }
+    return http.delete(url, headers);
+}
+
 
 export const httpRequest = {
       postItem,
-      getItem
+      getItem,
+      deleteItem
 };
