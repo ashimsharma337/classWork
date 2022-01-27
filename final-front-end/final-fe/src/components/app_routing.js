@@ -6,9 +6,7 @@ import { Register } from "./register/register_component";
 import { Logout } from "./logout/logout_component";
 import { AdminLayout } from "./admin/admin_layout";
 import { Dashboard } from "../components/admin/dashboard/dashboard_component";
-import { Category } from "../components/admin/category/category_component";
-import { CategoryCreate } from "../components/admin/category/categoryCreate_components";
-import { CategoryEdit } from "../components/admin/category/categoryEdit_component";
+import * as Category from "./admin/category";
 
 function PrivateRoute({component: Component}){
     const is_logged_in = localStorage.getItem('_at');
@@ -39,9 +37,9 @@ export function AppRouting(){
                 <Route path="/admin" element={<PrivateRoute component={<AdminLayout></AdminLayout>}></PrivateRoute>}>
 
                        <Route index element={<Dashboard></Dashboard>}/>
-                       <Route path="category" element={<Category></Category>}/>
-                       <Route path="category/create" element={<CategoryCreate></CategoryCreate>}/>
-                       <Route path="category/:id" element={<CategoryEdit></CategoryEdit>}/>
+                       <Route path="category" element={<Category.Category></Category.Category>}/>
+                       <Route path="category/create" element={<Category.CategoryCreate></Category.CategoryCreate>}/>
+                       <Route path="category/:id" element={<Category.CategoryEdit></Category.CategoryEdit>}/>
 
                 </Route>
                 

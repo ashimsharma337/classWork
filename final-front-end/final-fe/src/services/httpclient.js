@@ -39,9 +39,21 @@ const deleteItem = (url, is_strict=false) => {
     return http.delete(url, headers);
 }
 
+const getItemById = (url, is_strict=false) => {
+    let headers = getHeaders();
+    if(is_strict){
+        headers.headers = {
+            "authorization": localStorage.getItem("_at")
+        }
+    }
+    return http.get(url, headers);
+}
+
+
 
 export const httpRequest = {
       postItem,
       getItem,
-      deleteItem
+      deleteItem,
+      getItemById
 };

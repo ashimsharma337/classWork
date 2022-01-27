@@ -9,6 +9,8 @@ export function CategoryForm(props) {
     const [allCats, setAllCats] = useState([]);
     const [is_loading, setIsLoading] = useState(true);
 
+    const [data, setData] = useState(props.data);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = {
