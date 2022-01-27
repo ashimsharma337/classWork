@@ -61,6 +61,26 @@ class CategoryController{
 
         })
     }
+
+    getCategoryById = (req, res, next) => {
+        Category.findById(req.params.id)
+        .then((category) => {
+            res.json({
+                result: category,
+                status: 200,
+                msg: "Category found"
+            })
+        })
+        .catch((err) => {
+            res.json({
+                result: null,
+                status: 400,
+                msg: JSON.stringify(err)
+            })
+
+        })
+
+    }
 }
 
 module.exports = CategoryController;

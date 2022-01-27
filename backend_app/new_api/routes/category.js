@@ -10,7 +10,8 @@ router.route("/")
 .post(isLoggedIn, catController.addCategory)
 
 router.route("/:id")
-.delete(isLoggedIn, catController.deleteCategoryById);
+.delete(isLoggedIn, catController.deleteCategoryById)
+.get(isLoggedIn, catController.getCategoryById)
 
 
 module.exports = router;
