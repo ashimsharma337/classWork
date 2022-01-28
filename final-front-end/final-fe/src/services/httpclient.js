@@ -49,11 +49,21 @@ const getItemById = (url, is_strict=false) => {
     return http.get(url, headers);
 }
 
+const updateById = (url, data, is_strict=false) => {
+    let headers = getHeaders();
+    if(is_strict){
+        headers.headers = {
+            "authorization": localStorage.getItem("_at")
+        }
+    }
+    return http.put(url, data, headers);
+}
 
 
 export const httpRequest = {
       postItem,
       getItem,
       deleteItem,
-      getItemById
+      getItemById,
+      updateById
 };

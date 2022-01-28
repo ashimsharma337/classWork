@@ -13,13 +13,14 @@ export function CategoryCreate(){
         // TODO: Category register
         catSvc.addCategory(data, (err, response) => {
             console.log("Response: ", response);
+            if(response.data.status == 200){
+            toast.success(response.data.msg);
+            navigate("/admin/category");
+            } else {
+                toast.error(response.data.msg);
+            }
         });
-        // if(response.data.status == 200){
-        //     toast.success(response.data.msg);
-        //     navigate("/admin/category");
-        // } else {
-        //     toast.error(response.data.msg);
-        // }
+        
 
        
     }

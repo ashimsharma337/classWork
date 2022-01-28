@@ -13,7 +13,7 @@ export function CategoryEdit(){
     let params = useParams();
     useEffect(() => {
         //TODO: Axios call to get category
-        console.log("Params: ", params);
+        //console.log("Params: ", params);
         httpRequest.getItemById("category/"+params.id, true)
         .then((response) => {
             // console.log("Response: ", response);
@@ -27,13 +27,23 @@ export function CategoryEdit(){
     },[isLoading]);
     
     const editCategory = (data) => {
-        
+        //console.log("Edit: ", data);
+        httpRequest.updateById("category/"+params.id, data, true)
+        .then((response) => {
+            if(response.data.status == 200){
+                toast.success(response.data.msg);
+                navigate("/admin/category");
+            }
+        })
+        .catch((error) => {
+            console.error("Error: ");
+        })
     }
     return (
         <>
             <h4>Category Update</h4>
             <hr/>
-            <CategoryForm data={cat} onSubmitCallback={editCategory}></CategoryForm>
+            <CategoryForm catInfo={cat} onSubmitCallback={editCategory}></CategoryForm>
         </>
     )
 }
