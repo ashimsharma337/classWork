@@ -81,6 +81,31 @@ class CategoryController{
         })
 
     }
+
+    updateCategoryById = (req, res, next) => {
+        Category.updateOne({
+            _id: req.params.id
+        },
+        {
+            $set: req.body
+        }, {
+            upsert: true
+        })
+        .then((sucess) => {
+             res.json({
+                 result: req.body,
+                 status: 200,
+                 msg: "Category updated succesfully"    
+             })
+        })
+        .catch((err) => {
+            res.json({
+                result: null,
+                status: 400,
+                msg: JSON.stringify(err)    
+            })
+        })
+    }
 }
 
 module.exports = CategoryController;
