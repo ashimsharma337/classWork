@@ -7,6 +7,7 @@ import { Logout } from "./logout/logout_component";
 import { AdminLayout } from "./admin/admin_layout";
 import { Dashboard } from "../components/admin/dashboard/dashboard_component";
 import * as Category from "./admin/category";
+import * as Product from "./admin/product";
 
 function PrivateRoute({component: Component}){
     const is_logged_in = localStorage.getItem('_at');
@@ -40,6 +41,10 @@ export function AppRouting(){
                        <Route path="category" element={<Category.Category></Category.Category>}/>
                        <Route path="category/create" element={<Category.CategoryCreate></Category.CategoryCreate>}/>
                        <Route path="category/:id" element={<Category.CategoryEdit></Category.CategoryEdit>}/>
+
+                       <Route path="product" element={<Product.Product></Product.Product>}/>
+                       <Route path="product/create" element={<Product.ProductCreate></Product.ProductCreate>}/>
+
 
                 </Route>
                 

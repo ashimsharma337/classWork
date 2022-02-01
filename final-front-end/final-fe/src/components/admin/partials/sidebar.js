@@ -30,6 +30,13 @@ export function Sidebar(){
         </NavLink>
     </li>
     <li className="nav-item">
+        <NavLink className="nav-link" to="/admin/product">
+            <i className="fas fa-fw fa-tachometer-alt"></i>
+            <span>Product</span>
+            
+        </NavLink>
+    </li>
+    <li className="nav-item">
         <NavLink className="nav-link" to="/logout">
             <i className="fas fa-fw fa-tachometer-alt"></i>
             <span>Logout</span>

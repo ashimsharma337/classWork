@@ -24,8 +24,15 @@ const postItem = (url, data, is_restrict=false, headers = {}) => {
       return http.post(url, data, post_headers);
 }
 
-const getItem = (url, params = {}) => {
-    let post_headers = getHeaders(params);
+const getItem = (url, is_strict = false) => {
+
+
+    let post_headers = getHeaders();
+    if(is_strict){
+        post_headers.headers = {
+            "authorization": localStorage.getItem("_at")
+        }
+    }
     return http.get(url, post_headers);
 }
 
