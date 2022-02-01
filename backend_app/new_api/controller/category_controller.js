@@ -82,6 +82,46 @@ class CategoryController{
 
     }
 
+    getAllParents = (req, res, next) => {
+        Category.find({
+            parent_id: null
+        })
+        .then((cats) => {
+            res.json({
+                result: cats,
+                status: 200,
+                msg: "List successfull."
+            })
+        })
+        .catch((error) => {
+            res.json({
+                result: null,
+                status: 400,
+                msg: JSON.stringify(error)
+            })
+        })
+    }
+    
+    getChildByParent = (req, res, next) => {
+        Category.find({
+            parent_id: req.params.id
+        })
+        .then((cats) => {
+            res.json({
+                result: cats,
+                status: 200,
+                msg: "List successfull."
+            })
+        })
+        .catch((error) => {
+            res.json({
+                result: null,
+                status: 400,
+                msg: JSON.stringify(error)
+            })
+        })
+    }
+
     updateCategoryById = (req, res, next) => {
         Category.updateOne({
             _id: req.params.id
