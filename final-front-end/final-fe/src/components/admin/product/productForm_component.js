@@ -25,13 +25,15 @@ export class ProductForm extends react.Component{
                 ...commonFields
             },
             parent_cats: [],
-            child_cats: []
+            child_cats: [],
+            filesToUpload: []
         }
     }
 
     handleSubmit = (ev) => {
         ev.preventDefault();
-        console.log("Data: ", this.state);
+        this.props.handleSubmit(this.state.data, this.state.filesToUpload);
+        // console.log("Data: ", this.state);
     }
 
 
@@ -54,6 +56,24 @@ export class ProductForm extends react.Component{
             })
         }
 
+        if(type == "file"){
+            // TODO: UPLOAD FILE
+            // const xhr = new XMLHttpRequest();
+            // const formData = new FormData();
+            let {filesToUpload} = this.state;
+            // for(let key in files){
+            //     filesToUpload.push(files[key])
+            // }
+
+            filesToUpload = Object.keys(files).map((key) => files[key]);
+
+            return this.setState({
+                filesToUpload: filesToUpload
+            })
+
+            // console.log("Files: ", filesToUpload);
+        }
+
         this.setState((preState) => (
             {
                 data: {
@@ -67,6 +87,7 @@ export class ProductForm extends react.Component{
         })
 
        
+
     }
 
     componentDidMount = () => {
@@ -173,6 +194,7 @@ export class ProductForm extends react.Component{
                                     <label className="col-sm-3">Status: </label>
                                     <div className="col-sm-9">
                                         <select name="status" onChange={this.handleChange} required className="form-control form-control-sm">
+                                            <option value="">--Select Any One--</option>
                                             <option value="active">Active</option>
                                             <option value="inactive">Inactive</option>
                                         </select>
@@ -191,6 +213,16 @@ export class ProductForm extends react.Component{
 
                                         </div>
                                     </div>
+                            </div>
+
+                            <div className="row mb-3">
+                                {
+                                    this.state.filesToUpload.map((image, index) => (
+                                        <div key={index} className="col-sm-3">
+                                             <img src={URL.createObjectURL(image)} alt="" className="img img-fluid img-thumbnail"/>
+                                        </div>
+                                    ))
+                                }
                             </div>
 
                             <div className="row mb-3">

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { resolvePath } from "react-router-dom";
 
 const http = axios.create({
     baseURL: `${process.env.REACT_APP_BASE_URL}`,
@@ -66,11 +67,48 @@ const updateById = (url, data, is_strict=false) => {
     return http.put(url, data, headers);
 }
 
+const uploader = (method, url, data, file, is_strict=false) => {
+    return new Promise((res, rej) => {
+        let xhr = new XMLHttpRequest();
+        let formData = new FormData();
+
+        // file data
+        file.map((obj) => {
+            formData.append("image", obj, obj.name);
+        })
+
+        // other fields
+        for(let key in data){
+            formData.append(key, data[key])
+        }
+
+        xhr.onreadystatechange = () => {
+            // console.log("State: ", xhr.readyState);
+            // console.log("Response: ", xhr.response);
+            if(xhr.readyState == 4){
+                let response = JSON.parse(xhr.response);
+                if(response.status == 200){
+                    res(response);
+                } else {
+                    rej(response);
+                }
+            }
+        }
+
+        xhr.open(method, `${process.env.REACT_APP_BASE_URL}/`+url);
+        if(is_strict){
+            xhr.setRequestHeader("authorization", localStorage.getItem("_at"));
+        }
+        xhr.send(formData);
+    });
+}
+
 
 export const httpRequest = {
       postItem,
       getItem,
       deleteItem,
       getItemById,
-      updateById
+      updateById,
+      uploader
 };

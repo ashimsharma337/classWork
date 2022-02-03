@@ -2,12 +2,33 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { FaPlus
  } from "react-icons/fa";
+import { httpRequest } from "../../../services/httpclient";
+import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
+import { toast } from "react-toastify";
 export class Product extends React.Component{
     constructor(){
         super()
+        this.state = {
+            products: []
+        }
+    }
+    
+    componentDidMount = () => {
+        httpRequest.getItem("/product", true)
+        .then((response) => {
+           if(response.data.status){
+               this.setState({
+                   products: response.data.result
+               })
+           }
+        })
+        .catch((error) => {
+           toast.error(error.data.msg); 
+        })
     }
 
     render(){
+        let {products} = this.state;
         return (
             <>
                 <h4>
@@ -32,7 +53,25 @@ export class Product extends React.Component{
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                {
+                                    products.map((o, i) => (
+                                        <tr key={i}>
+                                           <td>{i+1}</td>
+                                           <td>{o.title}</td>
+                                           <td>{o.cat_id?.title}
+                                               &nbsp;
+                                               <sub>
+                                                   {o.sub_cat_id?.title}
+                                               </sub>
+                                           </td>
+                                           <td>{o.price}</td>
+                                           <td>{o.discount}</td>
+                                           <td>
+
+                                           </td>
+                                        </tr>
+                                    ))
+                                }
                             </tbody>
                         </table>
                     </div>
