@@ -11,7 +11,7 @@ const productController = new ProductController();
 
 router.route("/")
 .get(productController.getAllproducts)
-.post(uploader.single("image"), productController.addProduct); 
+.post(uploader.array("image", 10), productController.addProduct); 
 // to upload multiple image uploader.array("image", number of image(if empty load all))....see product_controller.js
 
 router.route("/:id")
