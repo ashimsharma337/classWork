@@ -5,6 +5,7 @@ import { FaPlus
 import { httpRequest } from "../../../services/httpclient";
 import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
 import { toast } from "react-toastify";
+import { ActionButtons } from "../../common/action-btns/actionBtns_component";
 export class Product extends React.Component{
     constructor(){
         super()
@@ -25,6 +26,33 @@ export class Product extends React.Component{
         .catch((error) => {
            toast.error(error.data.msg); 
         })
+    }
+    
+    deleteProduct = (id, deleteId) => {
+      // console.log("Id: ", id);
+      httpRequest.deleteItem("/product/"+id, true)
+      .then((response) => {
+
+         console.log("Response: ", response.data);
+
+         if(response.data.status == 200){
+          toast.success(response.data.msg)
+          httpRequest.getItem("/product", true)
+                .then((response) => {
+                    if(response.data.status){
+                        this.setState({
+                            products: response.data.result
+                        })
+                    }
+                })
+                .catch((error) => {
+                    toast.error(error.data.msg); 
+                })
+         }
+      })
+      .catch((response) => {
+          toast.error(response.data.msg);
+      })
     }
 
     render(){
@@ -67,7 +95,11 @@ export class Product extends React.Component{
                                            <td>{o.price}</td>
                                            <td>{o.discount}</td>
                                            <td>
-
+                                              <ActionButtons
+                                                  delIndex={i}
+                                                  id={o._id}
+                                                  onDelete={this.deleteProduct}
+                                              />
                                            </td>
                                         </tr>
                                     ))
