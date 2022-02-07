@@ -98,15 +98,21 @@ updateProductById(req, res, next) {
 deleteProductById(req, res, next) {
     ProductModel.deleteOne({
         _id: req.params.id
-         }, 
-        {},
-         function(err, success) {
-             if(err) {
-                 next(err)
-             } else {
-             res.json(success);
-             }
-         });
+    })
+    .then((success) => {
+         res.json({
+             result: null,
+             status: 200,
+             msg: "product deleted successfully."
+         })
+    })
+    .catch((error) => {
+        res.json({
+            result: null,
+            status: 400,
+            msg: "Error while deleting product."
+        })
+    })
 }
 }
 
