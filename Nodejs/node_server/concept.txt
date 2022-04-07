@@ -40,7 +40,8 @@ GET, POST, PUT, PATCH, DELETE (also known as http verbs, restful service method,
 
 
 
-API -- Application Programming Interface
+API -- Application Programming Interface-------It is a interaction between software.
+(e.g User Interface is a interaction between user and software where as API is a interaction between software (client server interaction)).
 Suppose we have mobile app, same app has desktop app, mobile app, desktop app
 
 Mobile 
