@@ -49,10 +49,10 @@ Mobile
 
 Web app                    Api(communicator)                                          Server =============== Database
 eg(Ecommerce)                 key/endpoint(Url)
-                          we send data to enpoint
-Desktop                           of esewa
-                          they send back json data
-                     to browers(json is universal data format can be read by all programming language)
+                   we send data to enpoint
+Desktop            of esewa
+                   they send back json data
+                   to browers(json is a universal data format which can be read by all programming language which is also known as language independent data-format)
 
 
 
@@ -65,5 +65,7 @@ Desktop                           of esewa
 
 
 http and https
-https has a security layer remember meat shop gives two polythene bag, during hosting we have o buy ssl certificate 
+https has a security layer remember meat shop gives two polythene bag, during hosting we have to buy ssl certificate 
+(Secure Sockets Layer)
+If a website is asking users to sign in, enter personal details such as their credit card numbers, or view confidential information such as health benefits or financial information, then it is essential to keep the data confidential. SSL certificates help keep online interactions private and assure users that the website is authentic and safe to share private information with.
 
