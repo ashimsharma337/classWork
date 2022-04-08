@@ -17,8 +17,9 @@ you can use the shorthand and simply pass the key name.
 Here’s how you can declare an object with the 
          new ES6 / ES2015 syntax:                          old ES5 syntax(we could only define the variable using var key keyword)
              let cat = 'Miaow';                         var cat = 'Miaow';
-             let dog = 'Woof'                           var dog = 'Woof';
-             let dog = 'Woof';                          var bird = 'Peet peet';
+             let dog = 'Woof';                          var dog = 'Woof';
+             
+                                                        var bird = 'Peet peet';
              let bird = 'Peet peet';                    var someObject = {
              let someObject = {                                 cat: cat,  
                 cat,                                            dog: dog,
