@@ -23,7 +23,7 @@ Here’s how you can declare an object with the
              let bird = 'Peet peet';                    var someObject = {
              let someObject = {                                 cat: cat,  
                 cat,                                            dog: dog,
-                dog,                                              bird: bird
+                dog,                                            bird: bird
                 bird                                     }
                 
              }    
