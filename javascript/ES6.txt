@@ -1,7 +1,7 @@
 Oracle has a trademark on the term JavaScript, so the actual standard that 
 modern JavaScript implements is called the ECMAScript standard, or ES. 
 The primary JavaScript standard is ECMAScript 5, or ES5, released in 2009. 
-This is vanilla JavaScript without any special features, supported everywhere, even in IE 9.
+This is vanilla JavaScript without any special features, supported everywhere, even in IE 9.                       (ES5 has more community support than ES6)
 
 ES6 is a fairly new specification, released in 2015, and supports many new features. 
 It’s technically called ES2015, and each annual release after it is denoted by the year of its release. 
@@ -15,7 +15,7 @@ New in JavaScript with ES6/ES2015,
 if you want to define an object who's keys have the same name as the variables passed-in as properties, 
 you can use the shorthand and simply pass the key name. 
 Here’s how you can declare an object with the 
-         new ES6 / ES2015 syntax:                          old ES5 syntax
+         new ES6 / ES2015 syntax:                          old ES5 syntax(we could only define the variable using var key keyword)
              let cat = 'Miaow';                         var cat = 'Miaow';
              let dog = 'Woof'                           var dog = 'Woof';
              let dog = 'Woof';                          var bird = 'Peet peet';
@@ -44,7 +44,7 @@ Here’s how you can declare an object with the
 
 b. Destructuring
 
-     Destructuring means to break down a complex structure into simpler parts. 
+     Destructuring means to break down a complex structure into simpler parts.                            
      With the syntax of destructuring, you can extract smaller fragments from objects and arrays. 
      It can be used for assignments and declaration of a variable.    
 
