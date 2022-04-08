@@ -11,6 +11,10 @@ const router = express.Router();
 //     next();
 // });
 
+Middleware literally means anything you put in the middle of one layer of the software and another. 
+Express middleware are functions that execute during the lifecycle of a request to the Express server. 
+Each middleware has access to the HTTP request and response for each route (or path) it's attached to.
+
 // There are five type of express middleware 
 /*
 * a. App level middleware -Bind application-level middleware to an instance of the app object by using 
