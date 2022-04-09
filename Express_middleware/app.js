@@ -21,7 +21,7 @@ Each middleware has access to the HTTP request and response for each route (or p
 *                          the app.use() and app.METHOD() functions
 * b. Router level middleware -Router level middleware work just like application level middleware except
 *                             they are bound to an instance of express.Router ()
-* c. Error handleing middleware -Define error-handling middleware functions in the same way as 
+* c. Error handling middleware -Define error-handling middleware functions in the same way as 
 *                                other middleware functions, except with four arguments instead 
 *                                of three, specifically with the signature (err, req, res, next)): 404 error cant be handle
 *                                app.use((err, req, res, next) => {res.sendStatus(404)}); always called at end
