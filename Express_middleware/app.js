@@ -11,6 +11,13 @@ const router = express.Router();
 //     next();
 // });
 
+app.use(req, res, next) is an API that allows us to add one or more middlewares to the request pipeline of express. 
+A middleware is a function that has a defined signature, and through that, you can modify or end the request, 
+returning a response according to a condition that you program. For example, I can call res.end() and finish the request to the client. 
+Middlewares are executed in the order they're added. I can simply decorate the req object, adding or removing properties, for example, 
+authenticating an user and setting req.user = 'any user of database', and calling next(), the next middleware will begin its execution, 
+receiving the same instance of req, res, next.
+
 Middleware literally means anything you put in the middle of one layer of the software and another. 
 Express middleware are functions that execute during the lifecycle of a request to the Express server. 
 Each middleware has access to the HTTP request and response for each route (or path) it's attached to.
