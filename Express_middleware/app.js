@@ -5,6 +5,8 @@ import { Router } from "express";
 const app = express();
 const router = express.Router();
 
+var createError = require('http-errors');      //error handling package from npm
+
 // MiddleWare
 // app.use("/", (req, res, next) => {
 //     console.log("I was called");
@@ -58,6 +60,8 @@ app.get("/profile", (req, res) => {
 
 
 app.use("/", router);
+
+//using http-errors from npm
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
