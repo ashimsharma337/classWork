@@ -11,6 +11,10 @@ const router = express.Router();
 //     next();
 // });
 
+Middleware functions are functions that have access to the request object (req), the response object (res), 
+and the next middleware function in the application’s request-response cycle. 
+These functions are used to modify req and res objects for tasks like parsing request bodies, adding response headers, etc.
+
 app.use(req, res, next) is an API that allows us to add one or more middlewares to the request pipeline of express. 
 A middleware is a function that has a defined signature, and through that, you can modify or end the request, 
 returning a response according to a condition that you program. For example, I can call res.end() and finish the request to the client. 
@@ -24,16 +28,16 @@ Each middleware has access to the HTTP request and response for each route (or p
 
 // There are five type of express middleware 
 /*
-* a. App level middleware -Bind application-level middleware to an instance of the app object by using 
+* a. App level middleware -Bind application-level middleware to an instance of the app object by using                                 app.use
 *                          the app.use() and app.METHOD() functions
-* b. Router level middleware -Router level middleware work just like application level middleware except
+* b. Router level middleware -Router level middleware work just like application level middleware except                               router.use                   
 *                             they are bound to an instance of express.Router ()
-* c. Error handling middleware -Define error-handling middleware functions in the same way as 
+* c. Error handling middleware -Define error-handling middleware functions in the same way as                                          app.use((err, req, res, next)                                          
 *                                other middleware functions, except with four arguments instead 
 *                                of three, specifically with the signature (err, req, res, next)): 404 error cant be handle
 *                                app.use((err, req, res, next) => {res.sendStatus(404)}); always called at end
-* d. Built in middleware -express.static serves static assets such as HTML files, images, and so on.
-*                         express.json parses incoming requests with JSON payloads. NOTE: Available with Express 4.16.0+
+* d. Built in middleware -express.static serves static assets such as HTML files, images, and so on.                                   express.static,express.json,              
+*                         express.json parses incoming requests with JSON payloads. NOTE: Available with Express 4.16.0+               express.urlencoded               
 *                         express.urlencoded parses incoming requests with URL-encoded payloads. NOTE: Available with Express 4.16.0+
 * e. Third party middleware -body-parser, cookie-parser
 */
